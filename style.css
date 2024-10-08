@@ -1,0 +1,61 @@
+.fs-7 {
+  font-size: 0.9rem !important;
+}
+
+.btn {
+  border-radius: 16px !important;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-outline-secondary {
+  border-color: var(--dark-color);
+}
+
+.btn-primary {
+  background: rgb(252, 189, 21, 1);
+  border: none !important;
+  color: var(--dark-color) !important;
+}
+
+.search-wrapper {
+  background: rgba(236, 235, 233, 1);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  padding: 0rem 1.5rem;
+  margin-right: 0.5rem;
+}
+
+.search-wrapper input {
+  transition: width 0.25s ease;
+  will-change: width;
+}
+
+.search-wrapper input {
+  min-width: 300px;
+  padding: 1rem;
+  border: none !important;
+  background: transparent;
+}
+
+.search-wrapper input:focus,
+.search-wrapper input.active {
+  width: 450px;
+}
+
+input:not(.form-check-input):focus {
+  background: transparent;
+  border: 1px solid rgba(232, 232, 232, 1);
+}
+
+.form-control:focus {
+  box-shadow: none !important;
+}
+
+footer {
+  border-top: 1px solid rgba(232, 232, 232, 1);
+  padding-top: 2.5rem;
+}
