@@ -214,7 +214,7 @@ function validateLoginForm(event) {
  
     if (isValid) {
         // Submit the form or perform further actions
-        window.location.href = "mainPage.html";
+        window.location.href = "index.html";
     }
  
     return isValid;

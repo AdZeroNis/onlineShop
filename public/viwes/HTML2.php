@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,7 +24,7 @@
                     <span>حساب کاربری ندارید؟ <a href="#" onclick="register()">ثبت نام</a></span>
                     <img src="https://ibolak.com/storage/image/2024/6/1718807353-TCMlDRbPFbA1CHFG.svg" id="imgHeader"alt="">
                 </div>
-                <form>
+                <form action="" method="POST">
                 <div class="input-box">
                     <input type="text" class="input-field" placeholder="نام کاربری یا ایمیل" required>
                     <i class="bx bx-user"></i>
@@ -56,33 +57,33 @@
                     <span>حساب کاربری دارید؟ <a href="#" onclick="login()">ورود</a></span>
                     <img src="https://ibolak.com/storage/image/2024/6/1718807353-TCMlDRbPFbA1CHFG.svg" id="imgHeader"alt="">
                 </div>
-                <form action="">
+                <form action="" method="POST">
                 <!-- <div class="two-forms"> -->
                 <div class="input-box" style="position:relative;">
-                    <input type="text" class="input-field" placeholder="نام کاربری" required title="فقط حروف مجاز است">
+                    <input type="text" name="username" class="input-field" placeholder="نام کاربری" required title="فقط حروف مجاز است">
                     <i class="bx bx-user"></i>
                     <span id="usernameError" class="error-message"></span>
                 </div>
 
                 <div class="input-box" style="position:relative;">
-                    <input type="email" class="input-field" placeholder="ایمیل" required
+                    <input type="email" name="email" class="input-field" placeholder="ایمیل" required
                         title="لطفا ایمیل معتبر وارد کنید">
                     <i class="bx bx-envelope"></i>
                     <span id="emailError" class="error-message"></span>
                 </div>
                 <div class="input-box" style="position:relative;">
-                    <input type="password" class="input-field" placeholder="کلمه عبور" required
+                    <input type="password" name="password" class="input-field" placeholder="کلمه عبور" required
                         title="لطفا یک رمز عبور معتبر وارد کنید.(شامل حرف بزرگ،کوچک،عدد و عبارات خاص(@#&) و از 8 یا بیشتر کرکتر باشد)">
                     <i class="bx bx-lock-alt"></i>
                     <span id="passwordError" class="error-message"></span>
                 </div>
                 <div class="input-box" style="position:relative;">
-                    <input type="number" class="input-field" placeholder="شماره تلفن" required
+                    <input type="number" name="phoneNumber" class="input-field" placeholder="شماره تلفن" required
                         title="لطفاً یک شماره تلفن معتبر (11 رقم که با 0 شروع می شود) وارد کنید">
                     <i class="bx bx-envelope"></i>
                     <span id="PhoneError" class="error-message"></span>
                 </div>
-                <div class="input-box" style="position:relative;">
+                <div class="input-box" name="nationalCode" style="position:relative;">
                     <input type="number" class="input-field" id="nationalCode" placeholder="کد ملی" required
                         title="لطفا یک کد ملی معتبر وارد کنید">
                     <i class="bx bx-user"></i>
@@ -90,7 +91,7 @@
                 </div>
                 
                 <div class="input-box">
-                    <input type="submit" class="submit" onclick="validateRegisterForm()" value="ثبت نام">
+                    <input type="submit" name="signup" class="submit" onclick="validateRegisterForm()" value="ثبت نام">
                 </div>
                 
                 </div>
