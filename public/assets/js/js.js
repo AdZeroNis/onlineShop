@@ -85,7 +85,7 @@ function validateLoginForm(event) {
        // Store username and password in local storage
        localStorage.setItem("username", username.value);
        localStorage.setItem("password", password.value);
-       window.location.href="mainPage.html";
+       window.location.href="index.html";
     }
   
     return isValid;
@@ -214,7 +214,7 @@ function validateLoginForm(event) {
  
     if (isValid) {
         // Submit the form or perform further actions
-        window.location.href = "index.html";
+        window.location.href = "./index.html";
     }
  
     return isValid;
