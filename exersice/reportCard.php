@@ -49,7 +49,12 @@
                     $weightedSum += $score * $unit;
                 }
 
-                $avg = $totalUnits > 0 ? $weightedSum / $totalUnits : 0;
+                if ($totalUnits > 0) {
+                    $avg = $weightedSum / $totalUnits;
+                } else {
+                    $avg = 0;
+                }
+                
                 ?>
             </tbody>
         </table>
