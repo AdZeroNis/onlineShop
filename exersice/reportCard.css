@@ -1,0 +1,57 @@
+body {
+  background-color: #f5f7fa;
+  font-family: "IRANSans", sans-serif;
+}
+.report-card {
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  max-width: 850px;
+  margin: 50px auto;
+  padding: 30px;
+  border-top: 5px solid #007bff;
+  border-bottom: 5px solid #007bff;
+}
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.header h1 {
+  font-size: 26px;
+  color: #007bff;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.header-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  color: #6c757d;
+}
+.table {
+  margin-bottom: 20px;
+}
+.table th,
+.table td {
+  vertical-align: middle;
+  text-align: center;
+}
+.table th {
+  background-color: #007bff;
+  color: white;
+}
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f1f3f5;
+}
+.footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  font-weight: bold;
+  color: #007bff;
+}
+.icon {
+  color: #007bff;
+  font-size: 24px;
+  margin-left: 10px;
+}
