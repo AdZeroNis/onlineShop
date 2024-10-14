@@ -14,7 +14,7 @@
             <i class="fas fa-graduation-cap icon"></i>
             <h1>کارنامه تحصیلی</h1>
             <div class="header-info">
-                <p><strong>نام دانشجو:</strong>  ستاره عزآبادی</p>
+                <p><strong>نام دانشجو:</strong> ستاره عزآبادی</p>
                 <p><strong>شماره دانشجویی:</strong> ۹۸۱۲۳۴۵۶۷</p>
             </div>
             <div class="header-info">
@@ -34,27 +34,28 @@
             </thead>
             <tbody>
                 <?php
-                $nomre = array('زبان' => 18.50, 'فارسی' => 10, 'دینی' => 20,'ورزش'=>17);
-                $units = array('زبان' => 3, 'فارسی' => 2, 'دینی' => 1,'ورزش'=>2);
-                
-                $totalUnits = 0; // برای جمع تعداد واحدها
-                $weightedSum = 0; // برای جمع نمرات وزنی
+                $courses = [
+                    ['name' => 'زبان', 'units' => 3, 'score' => 18.50],
+                    ['name' => 'فارسی', 'units' => 2, 'score' => 10],
+                    ['name' => 'دینی', 'units' => 1, 'score' => 20],
+                    ['name' => 'ورزش', 'units' => 2, 'score' => 17],
+                ];
 
-                foreach ($nomre as $esm => $score) {
-                    $unit = $units[$esm]; // تعداد واحد درس
-                    echo "<tr><td>$esm</td><td>$unit</td><td>$score</td></tr>";
+                $totalUnits = 0; 
+                $weightedSum = 0; 
 
-                    // محاسبه مجموع وزنی و تعداد واحدها
-                    $totalUnits += $unit;
-                    $weightedSum += $score * $unit;
+                foreach ($courses as $course) {
+                    echo "<tr>
+                            <td>{$course['name']}</td>
+                            <td>{$course['units']}</td>
+                            <td>{$course['score']}</td>
+                          </tr>";
+
+                    $totalUnits += $course['units'];
+                    $weightedSum += $course['score'] * $course['units'];
                 }
 
-                if ($totalUnits > 0) {
-                    $avg = $weightedSum / $totalUnits;
-                } else {
-                    $avg = 0;
-                }
-                
+                $avg = ($totalUnits > 0) ? $weightedSum / $totalUnits : 0;
                 ?>
             </tbody>
         </table>
