@@ -15,11 +15,15 @@
             <h1>کارنامه تحصیلی</h1>
             <div class="header-info">
                 <p><strong>نام دانشجو:</strong> ستاره عزآبادی</p>
-                <p><strong>شماره دانشجویی:</strong> ۹۸۱۲۳۴۵۶۷</p>
+                <p><strong>شماره دانشجویی:</strong> 00131119907018</p>
             </div>
             <div class="header-info">
-                <p><strong>ترم:</strong> پنجم</p>
+                <p><strong>ترم:</strong> ششم</p>
                 <p><strong>تعداد واحد:</strong> 17</p>
+            </div>
+            <div class="header-info">
+                <p><strong>تاریخ تولد:</strong>1381/03/17</p>
+                <p><strong>محل تولد:</strong> گرگان</p>
             </div>
         </div>
 
@@ -35,10 +39,13 @@
             <tbody>
                 <?php
                 $courses = [
-                    ['name' => 'زبان', 'units' => 3, 'score' => 18.50],
-                    ['name' => 'فارسی', 'units' => 2, 'score' => 10],
-                    ['name' => 'دینی', 'units' => 1, 'score' => 20],
-                    ['name' => 'ورزش', 'units' => 2, 'score' => 17],
+                    ['name' => 'آزمایشگاه سیستم عامل 2', 'units' => 3, 'score' => 19.50],
+                    ['name' => 'آزمایشگاه مهندسی نرم افزار', 'units' => 2, 'score' => 19.5],
+                    ['name' => 'امنیت شبکه های کامپوتری', 'units' => 1, 'score' => 15],
+                    ['name' => 'برنامه نویسی موبایل', 'units' => 2, 'score' => 19],
+                    ['name' => 'تحلیل و طراحی سیستم', 'units' => 2, 'score' => 17],
+                    ['name' => 'طراحی صفحات وب پیشرفته', 'units' => 2, 'score' => 19],
+                    ['name' => 'هوش مصنوعی', 'units' => 2, 'score' => 11],
                 ];
 
                 $totalUnits = 0; 
