@@ -37,16 +37,12 @@
       .invoice-header {
         margin-bottom: 20px;
       }
-      .invoice-footer {
-        margin-top: 20px;
-      }
       .text-bold {
         font-weight: bold;
       }
-      /* محدود کردن اندازه جدول اطلاعات فاکتور */
       .info-table {
         width: 61%;
-        margin: 20px 15%; /* مرکز چین کردن جدول */
+        margin: 20px 15%; 
       }
       .info-table td {
         padding: 8px;
@@ -62,19 +58,19 @@
         </div>
       </div>
 
-      <!-- اطلاعات فاکتور (با عرض کمتر) -->
+      <!-- اطلاعات فاکتور -->
       <table class="info-table table-bordered">
         <tr>
-          <td class=" text-start"><strong>نام:</strong></td>
-          <td class=" text-center">[نام مشتری]</td>
+          <td class="text-start"><strong>نام:</strong></td>
+          <td class="text-center">[نام مشتری]</td>
         </tr>
         <tr>
-          <td class=" text-start"><strong>شماره فاکتور:</strong></td>
-          <td class=" text-center">[شماره]</td>
+          <td class="text-start"><strong>شماره فاکتور:</strong></td>
+          <td class="text-center">[شماره]</td>
         </tr>
         <tr>
-          <td class=" text-start"><strong>تاریخ:</strong></td>
-          <td class=" text-center">[تاریخ]</td>
+          <td class="text-start"><strong>تاریخ:</strong></td>
+          <td class="text-center">[تاریخ]</td>
         </tr>
       </table>
 
@@ -90,40 +86,53 @@
           </tr>
         </thead>
         <tbody>
+          <?php
+          // تعریف داده‌ها
+          $items = [
+              ['name' => 'محصول A', 'quantity' => 2, 'price' => 500000],
+              ['name' => 'محصول B', 'quantity' => 3, 'price' => 300000],
+              ['name' => 'محصول C', 'quantity' => 1, 'price' => 750000],
+          ];
+
+          // محاسبات
+          $total = 0;
+          foreach ($items as $item) {
+              $item['totalPrice'] = $item['quantity'] * $item['price'];
+              $total += $item['totalPrice'];
+              $itemPrices[] = $item; // ذخیره قیمت‌های کل برای نمایش
+          }
+
+          // محاسبه مالیات و مبلغ قابل پرداخت
+          $taxRate = 0.1; 
+          $tax = $total * $taxRate;
+          $finalAmount = $total + $tax;
+
+          // نمایش ردیف‌ها
+          foreach ($itemPrices as $index => $item): ?>
+          <!-- $index 
+          متغیری است که نشان‌دهنده شماره‌ی فعلی کالا در حلقه 
+          foreach است. -->
           <tr>
-            <td>1</td>
-            <td>محصول A</td>
-            <td>2</td>
-            <td>500,000</td>
-            <td>1,000,000</td>
+              <td><?php echo $index + 1; ?></td> <!-- شماره ردیف هر کالا را در جدول نمایش می‌دهد. -->>
+              <td><?php echo $item['name']; ?></td>
+              <td><?php echo $item['quantity']; ?></td>
+              <td><?php echo number_format($item['price']); ?></td>
+              <td><?php echo number_format($item['totalPrice']); ?></td>
           </tr>
-          <tr>
-            <td>2</td>
-            <td>محصول B</td>
-            <td>3</td>
-            <td>300,000</td>
-            <td>900,000</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>محصول C</td>
-            <td>1</td>
-            <td>750,000</td>
-            <td>750,000</td>
-          </tr>
+          <?php endforeach; ?>
         </tbody>
         <tfoot>
           <tr class="table-footer">
             <td colspan="4" class="text-center text-bold">جمع کل:</td>
-            <td>2,650,000</td>
+            <td><?php echo number_format($total); ?></td>
           </tr>
           <tr class="table-footer">
             <td colspan="4" class="text-center text-bold">نرخ مالیات:</td>
-            <td>50,000</td>
+            <td><?php echo number_format($tax); ?></td>
           </tr>
           <tr class="table-footer">
             <td colspan="4" class="text-center text-bold">مبلغ قابل پرداخت:</td>
-            <td>2,600,000</td>
+            <td><?php echo number_format($finalAmount); ?></td>
           </tr>
         </tfoot>
       </table>
