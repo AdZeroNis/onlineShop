@@ -90,28 +90,28 @@ function validateLoginForm(event) {
   
     return isValid;
   } 
- function isValidNationalCode(nationalCode) {
-    if (/^[0-9]{10}$/.test(nationalCode)) { // valid codemelli.lenght 
-        let sumCodemelliNumber = 0; 
-        for (let i = 0; i < 9; i++) { 
-            sumCodemelliNumber += parseInt(nationalCode[i]) * (10 - i); 
-        } 
-        let rem = sumCodemelliNumber % 11; 
-        let lastNationalCodeDigit = parseInt(nationalCode[9]); 
-        if ((rem > 1 && (11 - rem === lastNationalCodeDigit)) || (rem <= 1 && rem === lastNationalCodeDigit)) { // valid codemelli 
-            return true; 
-        } else { 
-            return false; 
-        } 
-    } else { // invalid codemelli 
-        return false; 
-    } 
-}
+//  function isValidNationalCode(nationalCode) {
+//     if (/^[0-9]{10}$/.test(nationalCode)) { // valid codemelli.lenght 
+//         let sumCodemelliNumber = 0; 
+//         for (let i = 0; i < 9; i++) { 
+//             sumCodemelliNumber += parseInt(nationalCode[i]) * (10 - i); 
+//         } 
+//         let rem = sumCodemelliNumber % 11; 
+//         let lastNationalCodeDigit = parseInt(nationalCode[9]); 
+//         if ((rem > 1 && (11 - rem === lastNationalCodeDigit)) || (rem <= 1 && rem === lastNationalCodeDigit)) { // valid codemelli 
+//             return true; 
+//         } else { 
+//             return false; 
+//         } 
+//     } else { // invalid codemelli 
+//         return false; 
+//     } 
+// }
  
  function validateRegisterForm() {
     var username = document.querySelector("#register .input-box input[type='text']");
     var password = document.querySelector("#register .input-box input[type='password']");
-    var nationalCode = document.querySelector("#register .input-box input[id='nationalCode']");
+    // var nationalCode = document.querySelector("#register .input-box input[id='nationalCode']");
     var phoneNumber = document.querySelector("#register .input-box input[type='number']:not([id='nationalCode'])"); 
     var email = document.querySelector("#register .input-box input[type='email']");
     var isValid = true; // Flag to track form validity
@@ -162,21 +162,21 @@ function validateLoginForm(event) {
         }
       }
       
-      if (nationalCode) {
-        var nationalCodeValue = nationalCode.value.trim();
-        if (!isValidNationalCode(nationalCodeValue)) {
-            nationalCode.classList.add("invalid");
-            var existingErrorMessage = nationalCode.nextElementSibling;
-            if (!existingErrorMessage || !existingErrorMessage.classList.contains('error-message')) {
-                var errorMessage = document.createElement('span');
-                errorMessage.textContent = 'لطفا کد ملی معتبر وارد کنید';
-                errorMessage.style.color = "white";
-                errorMessage.classList.add('error-message');
-                nationalCode.parentElement.appendChild(errorMessage);
-            }
-            isValid = false;
-        }
-      }
+    //   if (nationalCode) {
+    //     var nationalCodeValue = nationalCode.value.trim();
+    //     if (!isValidNationalCode(nationalCodeValue)) {
+    //         nationalCode.classList.add("invalid");
+    //         var existingErrorMessage = nationalCode.nextElementSibling;
+    //         if (!existingErrorMessage || !existingErrorMessage.classList.contains('error-message')) {
+    //             var errorMessage = document.createElement('span');
+    //             errorMessage.textContent = 'لطفا کد ملی معتبر وارد کنید';
+    //             errorMessage.style.color = "white";
+    //             errorMessage.classList.add('error-message');
+    //             nationalCode.parentElement.appendChild(errorMessage);
+    //         }
+    //         isValid = false;
+    //     }
+    //   }
       
       if (phoneNumber) {
         var phoneNumberValue = phoneNumber.value.trim();
