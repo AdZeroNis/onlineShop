@@ -9,7 +9,6 @@ if (isset($_POST['signup'])) {
  
 
     if (empty($username) || empty($email) || empty($password) || empty($phone)) {
-        echo "مقادیر را پر کنید";
     } else {
        
         $checkuser = $conn->prepare("SELECT email FROM user WHERE email=?");
