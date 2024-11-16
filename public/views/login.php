@@ -21,10 +21,10 @@
                     <img src="https://ibolak.com/storage/image/2024/6/1718807353-TCMlDRbPFbA1CHFG.svg" id="imgHeader" alt="">
                 </div>
                 <form action="" method="POST" onsubmit="return validateLoginForm(event)">
-                    <div class="input-box">
-                        <input type="text" name="email" class="input-field" placeholder=" ایمیل" title="لطفا ایمیل معتبر وارد کنید">
-                        <i class="bx bx-user"></i>
-                        <span id="usernameError" class="error-message"></span>
+                <div class="input-box">
+                        <input type="email" name="email" class="input-field" placeholder="ایمیل"  title="لطفا ایمیل معتبر وارد کنید">
+                        <i class="bx bx-envelope"></i>
+                        <span id="emailError" class="error-message"></span>
                     </div>
                     <div class="input-box">
                         <input type="password" name="password" class="input-field" placeholder="کلمه عبور" >
@@ -44,7 +44,7 @@
         </div>
     </div>
 
-    <script src="../assets/js/login.js"></script>
+    <!-- <script src="../assets/js/login.js"></script> -->
     <?php  if($errormassage){?>
   <script src="../assets/js/alerterror.js"></script>
   <?php } ?>

@@ -1,40 +1,46 @@
 <?php
 include 'db.php';
 session_start();
-$errorCheck='';
-$successmassage='';
-$errormassage='';
-if(isset($_POST['signup'])){
+$errorCheck = '';
+$successmassage = '';
+$errormassage = '';
 
+if (isset($_POST['signup'])) {
     $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
     $phone = $_POST['phone'];
- 
-    $checkuser=$conn->prepare("SELECT email FROM user WHERE email=?");
-    $checkuser->bindValue(1,$email);
+    
+    $checkuser = $conn->prepare("SELECT email FROM user WHERE email=?");
+    $checkuser->bindValue(1, $email);
     $checkuser->execute();
 
-    if($checkuser->rowCount()>0){
-        $errorCheck=true;
-    }else{
-        $result = $conn->prepare("INSERT INTO user (username, email, password, phone) VALUES (?, ?, ?,?)");;
-        if (empty($username) || empty($email) || empty($password) || empty($phone)){
-            $errormassage=true;
-        }else{
-            $result->bindValue(1,$username);
-            $result->bindValue(2,$email);
-            $result->bindValue(3,$password);
-            $result->bindValue(4,$phone);
-            if($result->execute()){
-                $_SESSION['signin']=true;
-                $_SESSION['email']=$email;
-                $_SESSION['password']=$password;
-                $_SESSION['phone']=$phone;
-                $_SESSION['username']=$username;
+    if ($checkuser->rowCount() > 0) {
+        $errorCheck = true; 
+    } else {
+    
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+   
+        $result = $conn->prepare("INSERT INTO user (username, email, password, phone) VALUES (?, ?, ?, ?)");
+
+        if (empty($username) || empty($email) || empty($password) || empty($phone)) {
+            $errormassage = true; 
+        } else {
+            $result->bindValue(1, $username);
+            $result->bindValue(2, $email);
+            $result->bindValue(3, $hashedPassword); 
+            $result->bindValue(4, $phone);
+
+            if ($result->execute()) {
+            
+                $_SESSION['signin'] = true;
+                $_SESSION['email'] = $email;
+                $_SESSION['phone'] = $phone;
+                $_SESSION['username'] = $username;
                 header('location:../views/index.html');
-            }else{
-                $successmassage=false;
+            } else {
+                $successmassage = false; 
             }
         }
     }
