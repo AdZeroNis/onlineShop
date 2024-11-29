@@ -14,8 +14,8 @@ loginInputFields.forEach(function (field) {
     }
  });
 });
-function validateLoginForm(event) {
-    event.preventDefault(); // Ensure this is the very first line
+function validateLoginForm() {
+  
     var email = document.querySelector("#login .input-box input[type='email']");
     var password = document.querySelector("#login .input-box input[type='password']");
  

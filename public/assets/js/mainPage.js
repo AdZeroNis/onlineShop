@@ -1,28 +1,28 @@
-window.addEventListener("DOMContentLoaded", function () {
-  var storedUsername = localStorage.getItem("username");
-  var storedPassword = localStorage.getItem("password");
-  if (storedPassword == null && storedUsername == null) {
-    window.location.href = "HTML2.html";
-  }
+// window.addEventListener("DOMContentLoaded", function () {
+//   var storedUsername = localStorage.getItem("username");
+//   var storedPassword = localStorage.getItem("password");
+//   if (storedPassword == null && storedUsername == null) {
+//     window.location.href = ".././php/login.php";
+//   }
 
-  if (storedUsername && storedPassword) {
-    var usernameInput = document.querySelector(
-      "#login .input-box input[type='text']"
-    );
-    var passwordInput = document.querySelector(
-      "#login .input-box input[type='password']"
-    );
+//   if (storedUsername && storedPassword) {
+//     var usernameInput = document.querySelector(
+//       "#login .input-box input[type='text']"
+//     );
+//     var passwordInput = document.querySelector(
+//       "#login .input-box input[type='password']"
+//     );
 
-    if (usernameInput && passwordInput) {
-      usernameInput.value = storedUsername;
-      passwordInput.value = storedPassword;
-    }
-  }
-});
+//     if (usernameInput && passwordInput) {
+//       usernameInput.value = storedUsername;
+//       passwordInput.value = storedPassword;
+//     }
+//   }
+// });
 document.addEventListener("DOMContentLoaded", function () {
   // Function to load content dynamically
   function loadContent(url) {
-    if (url === "./HTML2.html") {
+    if (url === ".././php/login.php") {
       // If the link is for "Exit", navigate directly without displaying content in the Outlet section
       window.location.href = url;
     } else {
@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 function ComingBack(){
-  window.location.href = "mainPage.html";
+  window.location.href = ".././views/mainPage.php";
 }
 function Profile(){
   window.location.href = "indexProfile.html";

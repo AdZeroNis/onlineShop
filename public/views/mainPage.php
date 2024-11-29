@@ -1,3 +1,11 @@
+<?php
+session_start(); 
+if (!isset($_SESSION['signin']) || $_SESSION['signin'] !== true) {
+   
+    header('Location: ./login.php');
+    exit; 
+}
+?>
 <!DOCTYPE html>
 <html lang="en" dir="rtl">
   <head>
@@ -19,7 +27,7 @@
               <img src="../assets/img/prof.jpg" alt="imageUser" />
             </div>
             <div class="nameUser">
-              <span>شقایق کریمی</span>
+            <span><?php echo $_SESSION['username']; ?></span> 
             </div>
             <div class="wellcome">
               <span>عزیز خوش آمدید</span>
@@ -45,9 +53,9 @@
               />
               <li>صورتحساب</li>
             </a>
-            <a href="./HTML2.html" class="item">
+            <a href="login.php" class="item">
               <img src="../assets/svg/logout-1 1.svg" alt="" />
-              <li>خروج</li>
+              <li><a href="../php/logout.php">خروج</a></li>
             </a>
           </ul>
         </div>

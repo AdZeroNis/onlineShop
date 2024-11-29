@@ -1,3 +1,12 @@
+<?php
+session_start(); 
+if (!isset($_SESSION['signin']) || $_SESSION['signin'] !== true) {
+   
+    header('Location: ./login.php');
+    exit; 
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
   <head>
@@ -13,6 +22,44 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="../assets/css/style.css" />
+    <style>
+      /* Style for the dropdown container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Hidden dropdown menu initially */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #f8f9fa;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    padding: 10px 0;
+}
+
+/* Display dropdown menu on hover */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Dropdown items style */
+.dropdown-item {
+    color: #343a40;
+    padding: 8px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Style for dropdown items when hovered */
+.dropdown-item:hover {
+    background-color: #e9ecef;
+    color: #495057;
+}
+
+    </style>
   </head>
   <body>
     <a
@@ -32,30 +79,50 @@
     </a>
 
     <div class="container mt-3">
-      <div class="d-flex align-items-center justify-content-between mb-3">
+    <div class="d-flex align-items-center justify-content-between mb-3">
         <div class="d-flex align-items-center">
-          <a
-            href="https://ibolak.com/basket"
-            class="btn btn-outline-secondary btn-with-icon fs-7"
-          >
-            <img
-              src="https://ibolak.com/assets/icons/basket.svg"
-              alt="Basket icon"
-            />
-            <span>سبد خرید</span>
-            <span class="btn-badge bg-light" id="basket-count-badge">0</span>
-          </a>
+            <!-- Basket button -->
+            <a href="https://ibolak.com/basket" class="btn btn-outline-secondary btn-with-icon fs-7">
+                <img src="https://ibolak.com/assets/icons/basket.svg" alt="Basket icon" />
+                <span>سبد خرید</span>
+                <span class="btn-badge bg-light" id="basket-count-badge">0</span>
+            </a>
 
-          <a
-            href="./login.php"
-            class="btn btn-primary btn-with-icon me-2 ps-4 fs-7"
-          >
-            <img
-              src="https://ibolak.com/assets/icons/user.svg"
-              alt="User icon"
-            />
-            <span> حساب کاربری </span>
-          </a>
+            <!-- User account -->
+            <div class="dropdown">
+                <?php if (isset($_SESSION['signin']) && $_SESSION['signin'] === true) { ?>
+                    
+                    <?php if ($_SESSION['role'] == 1) { ?>
+                        <!-- If the user is an admin, show dropdown with hover effect -->
+                        <a href="#" class="btn btn-primary btn-with-icon me-2 ps-4 fs-7 dropdown-toggle" id="userDropdown">
+                            <img src="https://ibolak.com/assets/icons/user.svg" alt="User icon" />
+                            <span><?php echo $_SESSION['username']; ?></span>
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="userDropdown">
+                            <a class="dropdown-item" href="./mainPage.php">پنل ادمین</a>
+                        </div>
+
+                    <?php } else { ?>
+                        <!-- If the user is not an admin, just show the account link without dropdown -->
+                        <a href="#" class="btn btn-primary btn-with-icon me-2 ps-4 fs-7">
+                            <img src="https://ibolak.com/assets/icons/user.svg" alt="User icon" />
+                            <span><?php echo $_SESSION['username']; ?></span>
+                        </a>
+                    <?php } ?>
+
+                <?php } else { ?>
+                    <!-- If the user is not signed in, show the login link -->
+                    <a href="./login.php" class="btn btn-primary btn-with-icon me-2 ps-4 fs-7">
+                        <img src="https://ibolak.com/assets/icons/user.svg" alt="User icon" />
+                        <span>حساب کاربری</span>
+                    </a>
+                <?php } ?>
+            </div>
+
+
+
+
 
           <form
             method="get"

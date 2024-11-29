@@ -1,6 +1,6 @@
 <?php
 include 'db.php';
-include 'register.php';
+// include 'register.php';
 $loginCheck = '';
 $errormassage = '';
 $successmassage = '';
@@ -23,12 +23,13 @@ if (isset($_POST['login'])) {
 
      
             if (password_verify($password, $hashedPasswordFromDB)) {
-          
+                session_start();
                 $_SESSION['signin'] = true;
                 $_SESSION['email'] = $email;
                 $_SESSION['phone'] = $rows['phone'];
                 $_SESSION['username'] = $rows['username'];
-                header('location:../views/index.html');
+                $_SESSION['role'] = $rows['role'];
+                header('location:../views/index.php');
             } else {
                 $loginCheck = true; 
             }

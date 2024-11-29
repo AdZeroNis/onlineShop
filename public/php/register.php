@@ -1,6 +1,5 @@
 <?php
 include 'db.php';
-session_start();
 $errorCheck = '';
 $successmassage = '';
 $errormassage = '';
@@ -33,12 +32,7 @@ if (isset($_POST['signup'])) {
             $result->bindValue(4, $phone);
 
             if ($result->execute()) {
-            
-                $_SESSION['signin'] = true;
-                $_SESSION['email'] = $email;
-                $_SESSION['phone'] = $phone;
-                $_SESSION['username'] = $username;
-                header('location:../views/index.html');
+                header('location:../views/login.php');
             } else {
                 $successmassage = false; 
             }

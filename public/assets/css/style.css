@@ -306,3 +306,11 @@ a:hover {
   transition: transform .5s ease-out;
   /* aspect-ratio: 272 / 192; */
 }
+/* Dropdown container */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Hidden dropdown menu initially */
+
