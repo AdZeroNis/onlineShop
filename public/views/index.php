@@ -7,23 +7,12 @@ if (!isset($_SESSION['signin']) || $_SESSION['signin'] !== true) {
 }
 ?>
 <?php
-// اطلاعات اتصال به دیتابیس
-$host = "localhost";
-$username = "root";
-$password = "";
-$dbname = "ibolak";
+include '../php/db.php';
 
-// اتصال به دیتابیس
-$conn = new mysqli($host, $username, $password, $dbname);
-
-// بررسی اتصال
-if ($conn->connect_error) {
-  die("خطا در اتصال به دیتابیس: " . $conn->connect_error);
-}
-
-// بازیابی محصولات
 $sql = "SELECT product_name, price, size, color, description, image_path FROM products";
-$result = $conn->query($sql);
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
+      $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -137,10 +126,6 @@ $result = $conn->query($sql);
           <?php } ?>
         </div>
 
-
-
-
-
         <form
           method="get"
           action="https://ibolak.com/products"
@@ -168,33 +153,30 @@ $result = $conn->query($sql);
       </a>
     </div>
   </div>
-
-  <div class="container">
-    <h3 class="mt-4">محصولات اضافه‌شده</h3>
-    <div class="row">
-      <?php if ($result->num_rows > 0): ?>
-        <?php while ($row = $result->fetch_assoc()): ?>
+  <?php
+  if (count($products) > 0): 
+      ?>
+        <?php foreach ($products as $row): ?>
           <div class="col-md-4 mb-3">
             <div class="card">
-              <img src="<?php echo htmlspecialchars($row['image_path']); ?>" class="card-img-top" alt="تصویر محصول">
+              <img src="<?php echo ($row['image_path']); ?>" class="card-img-top" alt="تصویر محصول">
               <div class="card-body">
-                <h5 class="card-title"><?php echo htmlspecialchars($row['product_name']); ?></h5>
+                <h5 class="card-title"><?php echo ($row['product_name']); ?></h5>
                 <p class="card-text">
-                  قیمت: <?php echo htmlspecialchars($row['price']); ?> تومان<br>
-                  اندازه: <?php echo htmlspecialchars($row['size']); ?><br>
-                  رنگ: <?php echo htmlspecialchars($row['color']); ?><br>
-                  توضیحات: <?php echo nl2br(htmlspecialchars($row['description'])); ?>
+                  قیمت: <?php echo ($row['price']); ?> تومان<br>
+                  اندازه: <?php echo ($row['size']); ?><br>
+                  رنگ: <?php echo ($row['color']); ?><br>
+                  توضیحات: <?php echo (($row['description'])); ?>
                 </p>
               </div>
             </div>
           </div>
-        <?php endwhile; ?>
+        <?php endforeach; ?>
       <?php else: ?>
         <p>محصولی برای نمایش وجود ندارد.</p>
       <?php endif; ?>
     </div>
-
-  </div>
+</div>
 
   <footer>
     <div class="footer">
@@ -406,7 +388,6 @@ $result = $conn->query($sql);
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
-  <?php $conn->close(); ?>
 </body>
 
 </html>

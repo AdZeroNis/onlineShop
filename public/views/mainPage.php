@@ -1,10 +1,11 @@
-<?php
+<?php  
 session_start();
-if (!isset($_SESSION['signin']) || $_SESSION['signin'] !== true) {
-
-  header('Location: ./login.php');
-  exit;
+ if (!isset($_SESSION['signin']) || $_SESSION['signin'] !== true) {
+ if($_SESSION['role']!=1){
+  header('location:./login.php');
+ }
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="rtl">
@@ -43,9 +44,9 @@ if (!isset($_SESSION['signin']) || $_SESSION['signin'] !== true) {
             <img src="../assets/svg/note-2 1.svg" alt="imageGozaresh" />
             <li>گزارش </li>
           </a>
-          <a href="./sabteSefaresh.html" class="item">
+          <a href="./sabteSefaresh.php" class="item">
             <img src="../assets/svg/note-1 1.svg" alt="imageSefaresh" />
-            <li>ثبت سفارش</li>
+            <li>لیست سفارشات</li>
           </a>
           <a href="./soratHesab.html" class="item">
             <img

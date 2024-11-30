@@ -1,19 +1,8 @@
 <?php
-// اطلاعات اتصال به دیتابیس
-$host = "localhost";
-$username = "root";
-$password = "";
-$dbname = "ibolak";
 
-// اتصال به دیتابیس
-$conn = new mysqli($host, $username, $password, $dbname);
+include './db.php';
 
-// بررسی اتصال
-if ($conn->connect_error) {
-    die("اتصال به دیتابیس ناموفق بود: " . $conn->connect_error);
-}
 
-// بررسی ارسال فرم
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $productName = $_POST['productName'];
     $price = $_POST['price'];
@@ -21,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $color = $_POST['color'];
     $description = $_POST['description'];
 
-    $targetDir = "../uploads/";
+    $targetDir = "../uploads/Products/";
     $imageName = basename($_FILES["image"]["name"]);
     $targetFilePath = $targetDir . $imageName;
     $uploadOk = 1;
@@ -34,22 +23,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     if ($uploadOk && move_uploaded_file($_FILES["image"]["tmp_name"], $targetFilePath)) {
-        $stmt = $conn->prepare("INSERT INTO products (product_name, price, size, color, description, image_path) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("sdssss", $productName, $price, $size, $color, $description, $targetFilePath);
+        $stmt = $conn->prepare("INSERT INTO products (product_name, price, size, color, description, image_path) VALUES (:productName, :price, :size, :color, :description, :imagePath)");
+  
+        $stmt->bindParam(':productName', $productName);
+        $stmt->bindParam(':price', $price);
+        $stmt->bindParam(':size', $size);
+        $stmt->bindParam(':color', $color);
+        $stmt->bindParam(':description', $description);
+        $stmt->bindParam(':imagePath', $targetFilePath);
 
         if ($stmt->execute()) {
             echo "<script>
                     alert('محصول با موفقیت ثبت شد.');
-                    window.location.href = '../views/mainPage.php';
+                    window.location.href = '../views/sabteSefaresh.php';
                   </script>";
             exit;
         } else {
-            echo "<script>alert('خطا در ثبت محصول: " . $stmt->error . "');</script>";
+            echo "<script>alert('خطا در ثبت محصول: " . $stmt->errorInfo()[2] . "');</script>";
         }
-        $stmt->close();
     } else {
         echo "<script>alert('خطا در آپلود تصویر.');</script>";
     }
 }
-
-$conn->close();
+?>
