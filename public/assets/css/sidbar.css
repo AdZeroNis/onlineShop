@@ -77,6 +77,23 @@
   line-height: normal;
 }
 
+.items {
+  display: flex;
+  gap: 15px;
+}
+
+.SidBar ul li a {
+  list-style: none;
+  color: #fff;
+  text-align: right;
+  font-family: "IRANSans", serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-decoration: none;
+}
+
 @media (max-width: 1200px) {
   .SidBar ul {
     margin-right: 10px;
