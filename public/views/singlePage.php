@@ -1,5 +1,5 @@
-<?php include '../php/single.php' ?>
-<?php include '../php/index.php' ?>
+<?php include '../php/single.php'; ?>
+<?php include '../php/index.php'; ?>
 <!DOCTYPE html>
 <html lang="fa">
 
@@ -69,11 +69,22 @@
             <p><?php echo $product['description']; ?></p>
             <h4>قیمت: <?php echo $product['price']; ?> تومان</h4>
 
+            <!-- نمایش موجودی محصول -->
+            <h5>موجودی: <?php echo $product['stock']; ?> عدد</h5>
+
             <?php if (isset($_SESSION['signin']) && $_SESSION['signin'] === true): ?>
-            <a href=" " class="btn btn-warning">افزودن به سبد خرید</a>
+              <!-- بررسی موجودی کالا قبل از نمایش دکمه افزودن به سبد خرید -->
+              <?php if (isset($product['stock']) && $product['stock'] > 0): ?>
+        <a href="" class="btn btn-warning">
+         افزودن به سبد خرید
+        </a>
+           <?php else: ?>
+           <p style="color: red;">ناموجود</p>
+           <?php endif; ?>
+
             <?php else: ?>
-                <p>لطفاً <a href="login.php">وارد شوید</a> تا بتوانید محصول را به سبد خرید اضافه کنید.</p>
-                <?php endif; ?>
+              <p>لطفاً <a href="login.php">وارد شوید</a> تا بتوانید محصول را به سبد خرید اضافه کنید.</p>
+            <?php endif; ?>
           </div>
         </div>
 

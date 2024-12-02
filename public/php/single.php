@@ -11,7 +11,8 @@ include 'db.php';
 if (isset($_GET['product'])) {
   $product_name = $_GET['product'];
   
-  $sql = "SELECT product_name, price, size, color, description, image_path FROM products WHERE product_name = ?";
+  $sql = "SELECT product_name, price, size, color, description, image_path, stock FROM products WHERE product_name = ?";
+
   $stmt = $conn->prepare($sql);
   $stmt->bindValue(1, $product_name);
   $stmt->execute();
