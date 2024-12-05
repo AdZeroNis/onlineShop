@@ -3,12 +3,21 @@ include '../php/productsList.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>لیست محصولات</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .titleWrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    </style>
 </head>
+
 <body>
     <div class="container mt-4">
         <div class="titleWrapper">
@@ -47,7 +56,7 @@ include '../php/productsList.php';
                             <td><?php echo ($row['color']); ?></td>
                             <td><?php echo ($row['description']); ?></td>
                             <td>
-                            <a href=" " class="btn btn-warning">ویرایش</a>
+                                <a href=" " class="btn btn-warning">ویرایش</a>
 
 
                                 <a href="" class="btn btn-danger">حذف</a>
@@ -68,4 +77,5 @@ include '../php/productsList.php';
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>
