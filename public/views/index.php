@@ -25,71 +25,38 @@ include '../php/index.php';
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
     crossorigin="anonymous" />
   <link rel="stylesheet" href="../assets/css/style.css" />
-  <style>
-    /* Style for the dropdown container */
-    .dropdown {
-      position: relative;
-      display: inline-block;
-    }
-
-    /* Hidden dropdown menu initially */
-    .dropdown-menu {
-      display: none;
-      position: absolute;
-      background-color: #f8f9fa;
-      min-width: 160px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-      z-index: 1;
-      padding: 10px 0;
-    }
-
-    /* Display dropdown menu on hover */
-    .dropdown:hover .dropdown-menu {
-      display: block;
-    }
-
-    /* Dropdown items style */
-    .dropdown-item {
-      color: #343a40;
-      padding: 8px 16px;
-      text-decoration: none;
-      display: block;
-    }
-
-    /* Style for dropdown items when hovered */
-    .dropdown-item:hover {
-      background-color: #e9ecef;
-      color: #495057;
-    }
-  </style>
 </head>
 
 <body>
-<?php include './header.php'; ?>
-  <?php
-  if (count($products) > 0): 
-      ?>
-        <?php foreach ($products as $row): ?>
-          <div class="col-md-4 mb-3">
-            <div class="card">
+  <?php include './header.php'; ?>
+  <div class="container my-4">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+      <?php
+      if (count($products) > 0):
+        foreach ($products as $row): ?>
+          <div class="col">
+            <div class="card h-100 shadow-sm">
               <img src="<?php echo ($row['image_path']); ?>" class="card-img-top" alt="تصویر محصول">
               <div class="card-body">
                 <h5 class="card-title"><?php echo ($row['product_name']); ?></h5>
                 <p class="card-text">
-                  قیمت: <?php echo ($row['price']); ?> تومان<br>
-                  <a href="./singlePage.php?product=<?php echo ($row['product_name']); ?>" style="color: rgb(252, 189, 21);">مشاهده جزئیات</a>
+                  قیمت: <?php echo ($row['price']); ?> تومان
                 </p>
+                <a href="./singlePage.php?product=<?php echo ($row['product_name']); ?>" class="btn btn-warning btn-sm">مشاهده جزئیات</a>
               </div>
             </div>
           </div>
-        <?php endforeach; ?>
-      <?php else: ?>
+        <?php
+        endforeach;
+      else: ?>
         <p>محصولی برای نمایش وجود ندارد.</p>
-      <?php endif; ?>
+      <?php
+      endif; ?>
     </div>
-</div>
-<?php include './footer.php'; ?>
-  
+  </div>
+  </div>
+  <?php include './footer.php'; ?>
+
 
   <!-- Bootstrap Bundle with Popper -->
   <script
