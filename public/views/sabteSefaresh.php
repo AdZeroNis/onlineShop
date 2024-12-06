@@ -59,7 +59,9 @@ include '../php/productsList.php';
                                 <a href=" " class="btn btn-warning">ویرایش</a>
 
 
-                                <a href="" class="btn btn-danger">حذف</a>
+                                <a href="../php/deleteProduct.php?id=<?php echo $row['id']; ?>" class="btn btn-danger">حذف</a>
+
+
                             </td>
                         </tr>
                     <?php endforeach; ?>

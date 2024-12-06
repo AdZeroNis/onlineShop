@@ -16,9 +16,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $uploadOk = 1;
 
     $imageFileType = strtolower(pathinfo($targetFilePath, PATHINFO_EXTENSION));
-    $allowedTypes = ['jpg', 'png', 'jpeg', 'gif'];
+    $allowedTypes = ['jpg', 'png', 'jpeg', 'gif','webp'];
     if (!in_array($imageFileType, $allowedTypes)) {
-        echo "<script>alert('فرمت تصویر نامعتبر است. فقط JPG، PNG، JPEG، و GIF مجاز است.');</script>";
+        echo "<script>alert('فرمت تصویر نامعتبر است. فقط JPG، PNG، JPEG، و GIF,webp  مجاز است.');</script>";
         $uploadOk = 0;
     }
 
@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($stmt->execute()) {
             echo "<script>
                     alert('محصول با موفقیت ثبت شد.');
-                    window.location.href = '../views/sabteSefaresh.php';
+                    window.location.href = '../views/mainPage.php';
                   </script>";
             exit;
         } else {
