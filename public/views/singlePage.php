@@ -1,5 +1,6 @@
 <?php include '../php/single.php'; ?>
 <?php include '../php/index.php'; ?>
+<?php include '../php/insert_basket.php'; ?>
 <!DOCTYPE html>
 <html lang="fa">
 
@@ -9,10 +10,8 @@
   <title>صفحه محصول</title>
 
   <!-- Bootstrap CSS -->
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
     crossorigin="anonymous" />
   <link rel="stylesheet" href="../assets/css/style.css" />
   <style>
@@ -75,12 +74,15 @@
             <?php if (isset($_SESSION['signin']) && $_SESSION['signin'] === true): ?>
               <!-- بررسی موجودی کالا قبل از نمایش دکمه افزودن به سبد خرید -->
               <?php if (isset($product['stock']) && $product['stock'] > 0): ?>
-              <a href="" class="btn btn-warning">
-             افزودن به سبد خرید
-             </a>
-           <?php else: ?>
-           <p style="color: red;">ناموجود</p>
-           <?php endif; ?>
+                <!-- فرم برای ارسال اطلاعات محصول به سبد خرید -->
+                <form method="POST" action="">
+    <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
+    <input type="submit" name="Record" class="btn btn-warning" value="افزودن به سبد خرید">
+</form>
+
+              <?php else: ?>
+                <p style="color: red;">ناموجود</p>
+              <?php endif; ?>
 
             <?php else: ?>
               <p>لطفاً <a href="login.php">وارد شوید</a> تا بتوانید محصول را به سبد خرید اضافه کنید.</p>
