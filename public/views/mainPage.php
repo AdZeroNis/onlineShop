@@ -25,9 +25,9 @@ session_start();
     <div class="SideBar">
       <div class="SidBar">
         <div class="topSideBar">
-          <div class="imageUser">
-            <img src="../assets/img/prof.jpg" alt="imageUser" />
-          </div>
+          <!-- <div class="imageUser">
+           
+          </div> -->
           <div class="nameUser">
             <span><?php echo $_SESSION['username']; ?></span>
           </div>
@@ -52,7 +52,7 @@ session_start();
             <img
               src="../assets/svg/receipt-item 1.svg"
               alt="imageSoratHesab" />
-            <li>صورتحساب</li>
+            <li>پروفایل</li>
           </a>
           <a href="login.php" class="item">
             <li class="items">

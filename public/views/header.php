@@ -43,6 +43,9 @@
                 <img src="https://ibolak.com/assets/icons/user.svg" alt="User icon" />
                 <span><?php echo $_SESSION['username']; ?></span>
               </a>
+              <div class="dropdown-menu" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="./profile.php">پروفایل </a>
+              </div>
             <?php } ?>
 
           <?php } else { ?>

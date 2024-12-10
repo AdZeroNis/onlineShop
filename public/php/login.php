@@ -1,6 +1,7 @@
 <?php
+session_start();
 include 'db.php';
-// include 'register.php';
+
 $loginCheck = '';
 $errormassage = '';
 $successmassage = '';
@@ -8,33 +9,34 @@ $successmassage = '';
 if (isset($_POST['login'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
-    $result = $conn->prepare("SELECT * FROM `user` WHERE email=?");
-    
+    $result = $conn->prepare("SELECT * FROM user WHERE email=?");
+
     if (empty($email) || empty($password)) {
-        $errormassage = true; 
+        $errormassage = 'Email or password cannot be empty.';
     } else {
         $result->bindParam(1, $email);
         $result->execute();
 
-    
         if ($result->rowCount() > 0) {
             $rows = $result->fetch(PDO::FETCH_ASSOC);
-            $hashedPasswordFromDB = $rows['password']; 
+            $hashedPasswordFromDB = $rows['password'];
 
-     
             if (password_verify($password, $hashedPasswordFromDB)) {
-                session_start();
+                // Set session variables on successful login
                 $_SESSION['signin'] = true;
                 $_SESSION['email'] = $email;
+                $_SESSION['user_id'] = $rows['id']; // Store user ID in session
                 $_SESSION['phone'] = $rows['phone'];
                 $_SESSION['username'] = $rows['username'];
                 $_SESSION['role'] = $rows['role'];
-                header('location:../views/index.php');
+
+                // Redirect to profile or home page
+                header('Location: ../views/index.php');
             } else {
-                $loginCheck = true; 
+                $loginCheck = 'Invalid password.';
             }
         } else {
-            $loginCheck = true; 
+            $loginCheck = 'No user found with this email.';
         }
     }
 }
