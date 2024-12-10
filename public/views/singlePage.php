@@ -75,9 +75,9 @@
             <?php if (isset($_SESSION['signin']) && $_SESSION['signin'] === true): ?>
               <!-- بررسی موجودی کالا قبل از نمایش دکمه افزودن به سبد خرید -->
               <?php if (isset($product['stock']) && $product['stock'] > 0): ?>
-        <a href="" class="btn btn-warning">
-         افزودن به سبد خرید
-        </a>
+              <a href="" class="btn btn-warning">
+             افزودن به سبد خرید
+             </a>
            <?php else: ?>
            <p style="color: red;">ناموجود</p>
            <?php endif; ?>

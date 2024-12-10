@@ -1,7 +1,6 @@
 <?php 
 include '../php/profile.php';
 
-
 ?>
 
 <!DOCTYPE html>
@@ -134,18 +133,19 @@ include '../php/profile.php';
 
         <form action="" method="post">
             <label for="username">نام کاربری:</label>
-            <input type="text" id="username" name="username" value="<?php echo htmlspecialchars($users['username']); ?>" required />
+            <input type="text" id="username" name="username" value="<?php echo ($users['username']); ?>" required />
 
             <label for="email">ایمیل:</label>
-            <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($users['email']); ?>" required />
+            <input type="email" id="email" name="email" value="<?php echo ($users['email']); ?>" required />
 
             <label for="phone">تلفن:</label>
-            <input type="text" id="phone" name="phone" value="<?php echo htmlspecialchars($users['phone']); ?>" required />
+            <input type="text" id="phone" name="phone" value="<?php echo ($users['phone']); ?>" required />
 
             <label for="password">رمز عبور جدید:</label>
             <input type="password" id="password" name="password" />
 
             <button type="submit" name="edit_profile">ویرایش پروفایل</button>
+            <a href="../php/logout.php">خروج از حساب</a>
         </form>
     </div>
 </body>

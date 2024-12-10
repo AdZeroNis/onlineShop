@@ -1,10 +1,6 @@
 <?php  
-session_start();
- if (!isset($_SESSION['signin']) || $_SESSION['signin'] !== true) {
- if($_SESSION['role']!=1){
-  header('location:./login.php');
- }
-}
+include '../php/profile.php';
+
 
 ?>
 <!DOCTYPE html>
@@ -29,7 +25,7 @@ session_start();
            
           </div> -->
           <div class="nameUser">
-            <span><?php echo $_SESSION['username']; ?></span>
+            <span><?php echo $users['username']; ?></span>
           </div>
           <div class="wellcome">
             <span>عزیز خوش آمدید</span>
@@ -46,13 +42,13 @@ session_start();
           </a>
           <a href="./sabteSefaresh.php" class="item">
             <img src="../assets/svg/note-1 1.svg" alt="imageSefaresh" />
-            <li>لیست سفارشات</li>
+            <li>لیست محصولات</li>
           </a>
           <a href="./soratHesab.html" class="item">
             <img
               src="../assets/svg/receipt-item 1.svg"
               alt="imageSoratHesab" />
-            <li>پروفایل</li>
+            <li>لیست سفارشات</li>
           </a>
           <a href="login.php" class="item">
             <li class="items">

@@ -1,3 +1,4 @@
+<?php include '../php/profile.php'; ?>
 <a
     class="d-flex"
     style="margin-top: 0 !important"
@@ -16,7 +17,7 @@
     <div class="d-flex align-items-center justify-content-between mb-3">
       <div class="d-flex align-items-center">
         <!-- Basket button -->
-        <a href="https://ibolak.com/basket" class="btn btn-outline-secondary btn-with-icon fs-7">
+        <a href="" class="btn btn-outline-secondary btn-with-icon fs-7">
           <img src="https://ibolak.com/assets/icons/basket.svg" alt="Basket icon" />
           <span>سبد خرید</span>
           <span class="btn-badge bg-light" id="basket-count-badge">0</span>
@@ -30,18 +31,19 @@
               <!-- If the user is an admin, show dropdown with hover effect -->
               <a href="#" class="btn btn-primary btn-with-icon me-2 ps-4 fs-7 dropdown-toggle" id="userDropdown">
                 <img src="https://ibolak.com/assets/icons/user.svg" alt="User icon" />
-                <span><?php echo $_SESSION['username']; ?></span>
+                <span><?php echo $users['username']; ?></span>
               </a>
 
               <div class="dropdown-menu" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="./mainPage.php">پنل ادمین</a>
+                <a class="dropdown-item" href="./profile.php">پروفایل </a>
               </div>
 
             <?php } else { ?>
               <!-- If the user is not an admin, just show the account link without dropdown -->
               <a href="#" class="btn btn-primary btn-with-icon me-2 ps-4 fs-7">
                 <img src="https://ibolak.com/assets/icons/user.svg" alt="User icon" />
-                <span><?php echo $_SESSION['username']; ?></span>
+                <span><?php echo $users['username']; ?></span>
               </a>
               <div class="dropdown-menu" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="./profile.php">پروفایل </a>

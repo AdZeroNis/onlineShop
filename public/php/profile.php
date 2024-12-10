@@ -1,6 +1,8 @@
 <?php
 include '../php/db.php';
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 if (!isset($_SESSION['signin']) || $_SESSION['signin'] !== true) {
     header('Location: ./login.php');
