@@ -44,7 +44,7 @@ include '../php/profile.php';
             <img src="../assets/svg/note-1 1.svg" alt="imageSefaresh" />
             <li>لیست محصولات</li>
           </a>
-          <a href="./soratHesab.html" class="item">
+          <a href="./orders.php" class="item">
             <img
               src="../assets/svg/receipt-item 1.svg"
               alt="imageSoratHesab" />

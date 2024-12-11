@@ -17,10 +17,10 @@
     <div class="d-flex align-items-center justify-content-between mb-3">
       <div class="d-flex align-items-center">
         <!-- Basket button -->
-        <a href="" class="btn btn-outline-secondary btn-with-icon fs-7">
+        <a href="../views/basket.php" class="btn btn-outline-secondary btn-with-icon fs-7">
           <img src="https://ibolak.com/assets/icons/basket.svg" alt="Basket icon" />
           <span>سبد خرید</span>
-          <span class="btn-badge bg-light" id="basket-count-badge">0</span>
+          <span class="btn-badge bg-light" id="basket-count-badge"></span>
         </a>
 
         <!-- User account -->

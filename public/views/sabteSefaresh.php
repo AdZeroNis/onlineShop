@@ -43,6 +43,7 @@ include '../php/productsList.php';
                     <th>رنگ</th>
                     <th>توضیحات</th>
                     <th>عملیات</th>
+
                 </tr>
             </thead>
             <tbody>

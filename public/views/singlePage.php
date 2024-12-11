@@ -58,7 +58,7 @@
   <?php include './header.php'; ?>
 
   <div class="container">
-    <?php if ($product): ?>
+    <?php if ($product): ?>  <!-- بررسی اینکه آیا محصول موجود است یا خیر -->
       <div class="row">
         <!-- نمایش اطلاعات محصول در سمت چپ -->
         <div class="col-lg-6 order-lg-2 order-1">
@@ -76,9 +76,9 @@
               <?php if (isset($product['stock']) && $product['stock'] > 0): ?>
                 <!-- فرم برای ارسال اطلاعات محصول به سبد خرید -->
                 <form method="POST" action="">
-    <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
-    <input type="submit" name="Record" class="btn btn-warning" value="افزودن به سبد خرید">
-</form>
+                  <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
+                  <input type="submit" name="Record" class="btn btn-warning" value="افزودن به سبد خرید">
+                </form>
 
               <?php else: ?>
                 <p style="color: red;">ناموجود</p>

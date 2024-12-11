@@ -26,26 +26,12 @@ if (isset($_POST['Record'])) {
         echo "Product ID: " . $product_id;
 
         try {
-         
-            $query = "SELECT * FROM basket WHERE product_id = :product_id AND user_id = :user_id";
-            $stmt = $conn->prepare($query);
-            $stmt->bindParam(':product_id', $product_id, PDO::PARAM_INT);
-            $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-            $stmt->execute();
-
-            if ($stmt->rowCount() > 0) {
+        
              
-                $query = "UPDATE basket SET quantity = quantity + 1 WHERE product_id = :product_id AND user_id = :user_id";
-                $stmt = $conn->prepare($query);
-                $stmt->bindParam(':product_id', $product_id, PDO::PARAM_INT);
-                $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-            } else {
-            
                 $query = "INSERT INTO basket (user_id, product_id, quantity) VALUES (:user_id, :product_id, 1)";
                 $stmt = $conn->prepare($query);
                 $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
                 $stmt->bindParam(':product_id', $product_id, PDO::PARAM_INT);
-            }
 
   
             if ($stmt->execute()) {

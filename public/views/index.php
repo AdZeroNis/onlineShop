@@ -42,7 +42,8 @@ include '../php/index.php';
                 <p class="card-text">
                   قیمت: <?php echo ($row['price']); ?> تومان
                 </p>
-                <a href="./singlePage.php?product=<?php echo ($row['product_name']); ?>" class="btn btn-warning btn-sm">مشاهده جزئیات</a>
+                <a href="./singlePage.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm">مشاهده جزئیات</a>
+
               </div>
             </div>
           </div>
