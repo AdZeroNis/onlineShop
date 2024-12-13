@@ -141,8 +141,8 @@
 
             <!-- نمایش موجودی محصول -->
             <div>
-              <span class="title">موجودی:</span>
-              <span><?php echo $product['stock']; ?> عدد</span>
+              <!-- <span class="title">موجودی:</span>
+              <span><?php echo $product['stock']; ?> عدد</span> -->
             </div>
 
             <?php if (isset($_SESSION['signin']) && $_SESSION['signin'] === true): ?>

@@ -141,7 +141,7 @@ include '../php/profile.php';
           </defs>
         </svg>
       </div>
-      <form class="form" action="" method="post">
+<form class="form" action="" method="post">
     <label for="username">نام کاربری:</label>
     <input type="text" id="username" name="username" value="<?php echo ($users['username']); ?>" required />
 
@@ -153,8 +153,10 @@ include '../php/profile.php';
 
     <button type="submit" name="edit_profile">ویرایش پروفایل</button>
     <a href="./resetPass.php" class="btn btn-link">تغییر رمز عبور</a>
-    <a href="../php/logout.php">خروج از حساب</a>
+    <a href="../php/logout.php" onclick="return confirm('آیا مطمئن هستید که می‌خواهید از حساب خود خارج شوید؟');">خروج از حساب</a>
+    
 </form>
+
 
 
 
