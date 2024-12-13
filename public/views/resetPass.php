@@ -1,7 +1,4 @@
-<?php
-include '../php/profile.php';
-
-?>
+<?php include '../php/resetPass.php'; ?>
 
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
@@ -9,7 +6,7 @@ include '../php/profile.php';
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Edit Profile Page</title>
+  <title>Change Password</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/style.css" />
   <style>
@@ -119,22 +116,11 @@ include '../php/profile.php';
   <div class="parent">
     <div class="container intoParent">
       <div class="titleWrapper">
-        <h2>پروفایل</h2>
-        <svg
-          width="260"
-          height="2"
-          viewBox="0 0 260 2"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg">
+        <h2>تغییر رمز عبور</h2>
+        <svg width="260" height="2" viewBox="0 0 260 2" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M259.5 1H0" stroke="url(#paint0_linear)" />
           <defs>
-            <linearGradient
-              id="paint0_linear"
-              x1="260"
-              y1="1.99734"
-              x2="0"
-              y2="1.99734"
-              gradientUnits="userSpaceOnUse">
+            <linearGradient id="paint0_linear" x1="260" y1="1.99734" x2="0" y2="1.99734" gradientUnits="userSpaceOnUse">
               <stop stop-color="#3C8023" />
               <stop offset="1" stop-color="#3C8023" stop-opacity="0" />
             </linearGradient>
@@ -142,21 +128,20 @@ include '../php/profile.php';
         </svg>
       </div>
       <form class="form" action="" method="post">
-    <label for="username">نام کاربری:</label>
-    <input type="text" id="username" name="username" value="<?php echo ($users['username']); ?>" required />
+  <label for="current_password">رمز عبور فعلی:</label>
+  <input type="password" class="form-control" id="current_password" name="current_password" required />
+  <span class="text-danger"><?php echo $errors['current_password']; ?></span>
 
-    <label for="email">ایمیل:</label>
-    <input type="email" id="email" name="email" value="<?php echo ($users['email']); ?>" required />
+  <label for="new_password">رمز عبور جدید:</label>
+  <input type="password" class="form-control" id="new_password" name="new_password" required />
+  <span class="text-danger"><?php echo $errors['new_password']; ?></span>
 
-    <label for="phone">تلفن:</label>
-    <input type="text" id="phone" name="phone" value="<?php echo ($users['phone']); ?>" required />
+  <label for="confirm_password">تأیید رمز عبور جدید:</label>
+  <input type="password" class="form-control" id="confirm_password" name="confirm_password" required />
+  <span class="text-danger"><?php echo $errors['confirm_password']; ?></span>
 
-    <button type="submit" name="edit_profile">ویرایش پروفایل</button>
-    <a href="./resetPass.php" class="btn btn-link">تغییر رمز عبور</a>
-    <a href="../php/logout.php">خروج از حساب</a>
+  <button type="submit" name="change_password">تغییر رمز عبور</button>
 </form>
-
-
 
     </div>
   </div>

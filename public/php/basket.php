@@ -18,11 +18,11 @@ if (!isset($_SESSION['user_id'])) {
 $user_id = $_SESSION['user_id'];
 
 try {
-  
-    $query = "SELECT b.quantity, p.product_name, p.price, p.image_path
-    FROM basket b
-    JOIN products p ON b.product_id = p.id
-    WHERE b.user_id = :user_id";
+    // Corrected SQL Query with proper column separator
+    $query = "SELECT b.id, b.quantity, p.product_name, p.price, p.image_path
+              FROM basket b
+              JOIN products p ON b.product_id = p.id
+              WHERE b.user_id = :user_id";
     
     $stmt = $conn->prepare($query);
     $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);

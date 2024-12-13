@@ -1,4 +1,5 @@
-<?php include '../php/basket.php' ?>
+<?php include '../php/basket.php'; ?>
+
 <!DOCTYPE html>
 <html lang="fa">
 
@@ -55,7 +56,7 @@
         }
 
         .btn-checkout {
-            background-color: #28a745;
+            background-color: rgb(252, 189, 21, 1);
             color: white;
             border: none;
             border-radius: 8px;
@@ -65,7 +66,7 @@
         }
 
         .btn-checkout:hover {
-            background-color: #218838;
+            background-color: #0d6efd;
         }
 
         .empty-cart {
@@ -75,11 +76,31 @@
             margin-top: 50px;
         }
 
+        .btn-remove {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 6px 12px;
+        }
+
+        .btn-remove:hover {
+            background-color: #c82333;
+        }
+
         footer {
             background-color: #343a40;
             color: #fff;
             padding: 20px 0;
         }
+        #btn-delete{
+    border: none !important;
+    border-radius: 8px  !important;
+    padding: 9px 24px 9px 10px !important;
+    margin-top: 20px !important;
+  
+}
+        
 
     </style>
 </head>
@@ -95,23 +116,33 @@
             <table>
                 <thead>
                     <tr>
+                        <th>عکس محصول</th>
                         <th>نام محصول</th>
                         <th>قیمت</th>
                         <th>تعداد</th>
                         <th>جمع قیمت</th>
+                        <th>عملیات</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                     $total_sum = 0;
                     foreach ($basket_items as $item):
-                        $total_sum += $item['total_price'];
+                        $item_total_price = $item['price'] * $item['quantity']; // محاسبه جمع قیمت
+                        $total_sum += $item_total_price; 
                     ?>
                         <tr>
-                            <td><?php echo htmlspecialchars($item['product_name']); ?></td>
+                            <td><img src="<?php echo  $item['image_path']; ?>" alt="تصویر محصول" width="100"></td>
+                            <td><?php echo ($item['product_name']); ?></td>
                             <td><?php echo number_format($item['price']); ?> تومان</td>
-                            <td><?php echo htmlspecialchars($item['quantity']); ?></td>
-                            <td><?php echo number_format($item['total_price']); ?> تومان</td>
+                            <td><?php echo ($item['quantity']); ?></td>
+                            <td><?php echo number_format($item_total_price); ?> تومان</td>
+                            <td>
+                            
+                            <a href="../php/remove_from_basket.php?id=<?php echo $item['id']; ?>" class="btn btn-danger" id="btn-delete">حذف</a>
+
+
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -123,7 +154,10 @@
                 </tfoot>
             </table>
             <div class="text-center">
-                <button class="btn-checkout">ادامه خرید</button>
+                <form action="./invoice.php" method="POST">
+                    <input type="hidden" name="total_sum" value="<?php echo $total_sum; ?>" />
+                    <button type="submit" class="btn-checkout">ادامه خرید</button>
+                </form>
             </div>
         <?php else: ?>
             <p class="empty-cart">سبد خرید شما خالی است.</p>

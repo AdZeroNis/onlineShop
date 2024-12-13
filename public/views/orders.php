@@ -45,25 +45,24 @@
         <thead>
             <tr>
                 <th>تصویر محصول</th>
-                <td>ایدی کاربر</td>
+                <td>اسم کاربر</td>
                 <th>تعداد</th>
-                <td>ایدی محصول</td>
+                <td>اسم محصول</td>
                 <th>تاریخ سفارش</th>
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($orders as $order): 
-               
-            ?>
-            <tr>
-                <td><img src="<?php echo $order['image_path']; ?>" alt="تصویر محصول" width="100"></td>
-                <td><?php echo $order['user_id']; ?></td>
-                <td><?php echo ($order['quantity']); ?> عدد</td>
-                <td><?php echo $order['product_id']; ?></td>
-                <td><?php echo $order['created_at']; ?> </td>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
+    <?php foreach ($orders as $order): ?>
+    <tr>
+        <td><img src="<?php echo $order['image_path']; ?>" alt="تصویر محصول" width="100"></td>
+        <td><?php echo $order['user_name']; ?></td> <!-- نمایش نام کاربر -->
+        <td><?php echo ($order['quantity']); ?> عدد</td>
+        <td><?php echo $order['product_name']; ?></td> <!-- نمایش نام محصول -->
+        <td><?php echo $order['created_at']; ?></td>
+    </tr>
+    <?php endforeach; ?>
+</tbody>
+
     </table>
 </div>
 
