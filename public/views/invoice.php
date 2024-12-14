@@ -76,6 +76,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         .btn-submit:hover {
             background-color: #0d6efd;
         }
+
+        footer {
+            background-color: #343a40;
+            color: #fff;
+            padding: 20px 0;
+        }
     </style>
 </head>
 
