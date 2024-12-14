@@ -124,58 +124,53 @@
   <?php include './header.php'; ?>
 
   <div class="container product-section">
-    <?php if ($product): ?>
-      <div class="row align-items-center bg-white parent">
-        <!-- نمایش اطلاعات محصول در سمت چپ -->
-        <div class="col-lg-7 order-lg-2">
-          <span class="productName"><?php echo $product['product_name']; ?></span>
-          <p class="bg-lighter col-lg-11 rounded p-4">با توجه به تفاوت رنگ در صفحه نمایش و واقعیت، ممکن است
-            رنگ محصولات تا
-            ۲۰٪ متغیر باشد</p>
-          <div class="product-info">
-            <!-- نمایش اطلاعات محصول -->
-            <div>
-              <span class="title">توضیحات:</span>
-              <span><?php echo $product['description']; ?></span>
-            </div>
-
-            <!-- نمایش موجودی محصول -->
-            <div>
-              <!-- <span class="title">موجودی:</span>
-              <span><?php echo $product['stock']; ?> عدد</span> -->
-            </div>
-
-            <?php if (isset($_SESSION['signin']) && $_SESSION['signin'] === true): ?>
-              <!-- بررسی موجودی کالا قبل از نمایش دکمه افزودن به سبد خرید -->
-              <?php if (isset($product['stock']) && $product['stock'] > 0): ?>
-                <!-- فرم برای ارسال اطلاعات محصول به سبد خرید -->
-                <div class="bottom">
-                  <span class="price"><?php echo $product['price']; ?> تومان</span>
-                  <form method="POST" action="">
-                    <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
-                    <input type="submit" name="Record" class="btn btn-warning" value="افزودن به سبد خرید">
-                  </form>
-                </div>
-
-              <?php else: ?>
-                <span style="color: red;">ناموجود</span>
-              <?php endif; ?>
-
-            <?php else: ?>
-              <span>لطفاً <a href="login.php">وارد شوید</a> تا بتوانید محصول را به سبد خرید اضافه کنید.</span>
-            <?php endif; ?>
+  <?php if ($product): ?>
+    <div class="row align-items-center bg-white parent">
+      <!-- نمایش اطلاعات محصول در سمت چپ -->
+      <div class="col-lg-7 order-lg-2">
+        <span class="productName"><?php echo $product['product_name']; ?></span>
+        <p class="bg-lighter col-lg-11 rounded p-4">با توجه به تفاوت رنگ در صفحه نمایش و واقعیت، ممکن است
+          رنگ محصولات تا
+          ۲۰٪ متغیر باشد</p>
+        <div class="product-info">
+          <!-- نمایش اطلاعات محصول -->
+          <div>
+            <span class="title">توضیحات:</span>
+            <span><?php echo $product['description']; ?></span>
           </div>
-        </div>
 
-        <!-- نمایش تصویر محصول در سمت راست -->
-        <div class="col-lg-4 order-lg-1">
-          <img src="<?php echo $product['image_path']; ?>" alt="تصویر محصول" class="product-image">
+          <!-- نمایش موجودی محصول -->
+          <div>
+            <!-- <span class="title">موجودی:</span>
+            <span> عدد</span> -->
+          </div>
+
+          <?php if (isset($_SESSION['signin']) && $_SESSION['signin'] === true): ?>
+     
+              <!-- فرم برای ارسال اطلاعات محصول به سبد خرید -->
+              <div class="bottom">
+                <span class="price"><?php echo $product['price']; ?> تومان</span>
+                <form method="POST" action="">
+                  <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
+                  <input type="submit" name="Record" class="btn btn-warning" value="افزودن به سبد خرید">
+                </form>
+              </div>
+
+          <?php endif; ?>
+
         </div>
       </div>
-    <?php else: ?>
-      <p>محصولی یافت نشد.</p>
-    <?php endif; ?>
-  </div>
+
+      <!-- نمایش تصویر محصول در سمت راست -->
+      <div class="col-lg-4 order-lg-1">
+        <img src="<?php echo $product['image_path']; ?>" alt="تصویر محصول" class="product-image">
+      </div>
+    </div>
+  <?php else: ?>
+    <p>محصولی یافت نشد.</p>
+  <?php endif; ?>
+</div>
+
 
   <!-- Footer -->
   <?php include './footer.php'; ?>
