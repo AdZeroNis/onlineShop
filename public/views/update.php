@@ -21,9 +21,6 @@ include '../php/profile.php';
         <div class="SideBar">
             <div class="SidBar">
                 <div class="topSideBar">
-                    <!-- <div class="imageUser">
-           
-          </div> -->
                     <div class="nameUser">
                         <span><?php echo $users['username']; ?></span>
                     </div>
