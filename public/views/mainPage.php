@@ -36,9 +36,9 @@ include '../php/profile.php';
             <img src="../assets/svg/element-2 1.svg" alt="pishkhan" />
             <li>پیشخوان کاربری</li>
           </a>
-          <a href="./chart.html" class="item">
+          <a href="./userList.php" class="item">
             <img src="../assets/svg/note-2 1.svg" alt="imageGozaresh" />
-            <li>گزارش </li>
+            <li>لیست کاربران </li>
           </a>
           <a href="./sabteSefaresh.php" class="item">
             <img src="../assets/svg/note-1 1.svg" alt="imageSefaresh" />
