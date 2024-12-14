@@ -57,7 +57,7 @@ include '../php/productsList.php';
                             <td><?php echo ($row['color']); ?></td>
                             <td><?php echo ($row['description']); ?></td>
                             <td>
-                                <a href=" " class="btn btn-warning">ویرایش</a>
+                                <a href="./update.php" class="btn btn-warning">ویرایش</a>
 
 
                                 <a href="../php/deleteProduct.php?id=<?php echo $row['id']; ?>" class="btn btn-danger">حذف</a>
