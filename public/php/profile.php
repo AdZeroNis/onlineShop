@@ -24,13 +24,15 @@ if (isset($_POST['edit_profile'])) {
     $username = $_POST['username'];
     $email = $_POST['email'];
     $phone = $_POST['phone'];
+    $address= $_POST['address'];
         // Update the user details in the database
-        $updateStmt = $conn->prepare("UPDATE user SET username=?, email=?, phone=? WHERE id=?");
+        $updateStmt = $conn->prepare("UPDATE user SET username=?, email=?, phone=?,address=? WHERE id=?");
         $updateStmt->bindValue(1, $username);
         $updateStmt->bindValue(2, $email);
         $updateStmt->bindValue(3, $phone);
+        $updateStmt->bindValue(4, $address);  
      
-        $updateStmt->bindValue(4, $id);
+        $updateStmt->bindValue(5, $id);
         $updateStmt->execute();
 
         header("Location: index.php?id=" . $id); 

@@ -151,6 +151,9 @@ include '../php/profile.php';
     <label for="phone">تلفن:</label>
     <input type="text" id="phone" name="phone" value="<?php echo ($users['phone']); ?>" required />
 
+    <label for="address">آدرس:</label>
+    <input type="text" id="address" name="address" value="<?php echo ($users['address']); ?>" required />
+
     <button type="submit" name="edit_profile">ویرایش پروفایل</button>
     <a href="./resetPass.php" class="btn btn-link">تغییر رمز عبور</a>
     <a href="../php/logout.php" onclick="return confirm('آیا مطمئن هستید که می‌خواهید از حساب خود خارج شوید؟');">خروج از حساب</a>

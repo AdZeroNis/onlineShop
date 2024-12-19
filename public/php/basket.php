@@ -20,9 +20,9 @@ $user_id = $_SESSION['user_id'];
 try {
     // Corrected SQL Query with proper column separator
     $query = "SELECT b.id, b.quantity, p.product_name, p.price, p.image_path
-              FROM basket b
-              JOIN products p ON b.product_id = p.id
-              WHERE b.user_id = :user_id";
+    FROM basket b
+    JOIN products p ON b.product_id = p.id
+    WHERE b.user_id = :user_id";
     
     $stmt = $conn->prepare($query);
     $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
@@ -30,9 +30,7 @@ try {
 
     $basket_items = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
-    if (!$basket_items) {
-        echo "سبد خرید شما خالی است.";
-    }
+
 
 } catch (PDOException $e) {
     echo "خطا: " . $e->getMessage();

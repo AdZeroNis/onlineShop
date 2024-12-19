@@ -125,27 +125,27 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php
-                    $total_sum = 0;
-                    foreach ($basket_items as $item):
-                        $item_total_price = $item['price'] * $item['quantity']; // محاسبه جمع قیمت
-                        $total_sum += $item_total_price; 
-                    ?>
-                        <tr>
-                            <td><img src="<?php echo  $item['image_path']; ?>" alt="تصویر محصول" width="100"></td>
-                            <td><?php echo ($item['product_name']); ?></td>
-                            <td><?php echo number_format($item['price']); ?> تومان</td>
-                            <td><?php echo ($item['quantity']); ?></td>
-                            <td><?php echo number_format($item_total_price); ?> تومان</td>
-                            <td>
-                            
-                            <a href="../php/remove_from_basket.php?id=<?php echo $item['id']; ?>" class="btn btn-danger" id="btn-delete">حذف</a>
+    <?php
+    $total_sum = 0;
+    foreach ($basket_items as $item):
+        $item_total_price = $item['price'] * $item['quantity']; // محاسبه جمع قیمت
+        $total_sum += $item_total_price;
+    ?>
+        <tr>
+            <td><img src="<?php echo $item['image_path']; ?>" alt="تصویر محصول" width="100"></td>
+            <td><?php echo ($item['product_name']); ?></td>
+            <td><?php echo number_format($item['price']); ?> تومان</td>
+            <td><?php echo ($item['quantity']); ?></td>
+          
+            <td><?php echo number_format($item_total_price); ?> تومان</td>
+            
+            <td>
+                <a href="../php/remove_from_basket.php?id=<?php echo $item['id']; ?>" class="btn btn-danger" id="btn-delete">حذف</a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+</tbody>
 
-
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
                 <tfoot>
                     <tr>
                         <td colspan="3" class="total">جمع کل:</td>
@@ -154,9 +154,12 @@
                 </tfoot>
             </table>
             <div class="text-center">
+                
+                    <input type="hidden" name="total_sum" value="<?php echo $total_sum; ?>" />
+                
                 <form action="./invoice.php" method="POST">
                     <input type="hidden" name="total_sum" value="<?php echo $total_sum; ?>" />
-                    <button type="submit" class="btn-checkout">ادامه خرید</button>
+                    <button type="submit" name="Record" class="btn-checkout">ادامه خرید</button>
                 </form>
             </div>
         <?php else: ?>

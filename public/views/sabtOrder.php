@@ -1,20 +1,16 @@
 <?php
 include '../php/profile.php';
 
+// دریافت شناسه کاربر
 $user_id = $_SESSION['user_id'];
 
-
-$query = "SELECT id, product_id FROM basket WHERE user_id = :user_id";
+// بازیابی شناسه سبد خرید کاربر از دیتابیس
+$query = "SELECT id FROM basket WHERE user_id = :user_id";
 $stmt = $conn->prepare($query);
 $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
 $stmt->execute();
 $basket = $stmt->fetch(PDO::FETCH_ASSOC);
 $basket_id = $basket['id'];
-$product_id = $basket['product_id'];
-
-
-
-
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // دریافت جمع قیمت از سبد خرید
@@ -106,37 +102,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <?php include './header.php'; ?>
 
     <div class="container invoice-container">
-        <h2 class="text-center">فاکتور نهایی</h2>
+        <h2 class="text-center">سفارشات </h2>
 
         <table>
             <thead>
                 <tr>
-                    <th>جمع کل سبد خرید</th>
-                    <th>هزینه ارسال</th>
-                    <th>جمع نهایی</th>
+                    
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><?php echo number_format($total_sum); ?> تومان</td>
-                    <td><?php echo number_format($shipping_cost); ?> تومان</td>
-                    <td><?php echo number_format($final_price); ?> تومان</td>
+                   <td> سفارش شما ثبت شد برای دیدن وضعیت سفارش خود به لیست سفارشات بروید</td>
+                   
                 </tr>
             </tbody>
         </table>
-
-        <form action="../php/insertOrder.php" method="POST" class="address-field">
-            <label for="address">آدرس تحویل:</label>
-            <input type="text" name="address" id="address" class="form-control"  value="<?php echo ($users['address']); ?>" placeholder="آدرس خود را وارد کنید" />
-            <input type="hidden" name="product_id" value="<?php echo $product_id; ?>" /> <!-- ارسال product_id -->
-            <input type="hidden" name="user_id" value="<?php echo $user_id; ?>" />
-            <input type="hidden" name="basket_id" value="<?php echo $basket_id; ?>" />
-           <input type="hidden" name="total_price" value="<?php echo $final_price; ?>" />
-    <!-- دکمه ارسال -->
-           <button type="submit" name="Record" class="btn-submit">تأیید و ثبت سفارش</button>
-</form>
-
-            <input type="hidden" name="final_price" value="<?php echo $final_price; ?>" />
            
         </form>
     </div>

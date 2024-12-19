@@ -40,6 +40,8 @@
                     <th>نام کاربری</th>
                     <th>ایمیل</th>
                     <th>شماره تلفن</th>
+                    <th> آدرس</th>
+                    <th>نقش</th>
                     <th> عملیات</th>
                 </tr>
             </thead>
@@ -48,13 +50,21 @@
                 <?php if (count($users) > 0): ?>
                     <?php foreach ($users as $user): ?>
                         <tr>
-                            <td><?php echo htmlspecialchars($user['id']); ?></td>
-                            <td><?php echo htmlspecialchars($user['username']); ?></td>
-                            <td><?php echo htmlspecialchars($user['email']); ?></td>
-                            <td><?php echo htmlspecialchars($user['phone']); ?></td>
+                            <td><?php echo ($user['id']); ?></td>
+                            <td><?php echo ($user['username']); ?></td>
+                            <td><?php echo ($user['email']); ?></td>
+                            <td><?php echo ($user['phone']); ?></td>
+                            <td><?php echo ($user['address']); ?></td>
+                            <?php if($user['role']===1): ?>
+                                <td><?php echo 'ادمین';?></td>
+                            <?php else: ?>
+                                <td><?php echo 'کاربر';?></td>
+                                <?php endif; ?>
                             <td>
+                           
                             <a href="../php/deleteUser.php?id=<?php echo $user['id']; ?>" class="btn btn-danger">حذف</a>
                             </td>
+                            
                         </tr>
                     <?php endforeach; ?>
                 <?php else: ?>

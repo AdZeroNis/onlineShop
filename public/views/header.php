@@ -37,6 +37,7 @@
               <div class="dropdown-menu" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="./mainPage.php">پنل ادمین</a>
                 <a class="dropdown-item" href="./profile.php">پروفایل </a>
+                <a class="dropdown-item" href="./ordersListUsers.php">لیست سفارشات </a>
               </div>
 
             <?php } else { ?>
@@ -47,6 +48,7 @@
               </a>
               <div class="dropdown-menu" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="./profile.php">پروفایل </a>
+                <a class="dropdown-item" href="./ordersListUsers.php">لیست سفارشات </a>
               </div>
             <?php } ?>
 
@@ -78,7 +80,7 @@
             class="form-control" />
         </form>
       </div>
-      <a href="/" title="">
+      <a href="./index.php" title="">
         <img
           src="https://ibolak.com/assets/images/ibolak-logo.svg"
           height="50"

@@ -22,7 +22,7 @@
                 </div>
                 <form action="" method="POST" onsubmit="return validateRegisterForm(event)">
                     <div class="input-box">
-                        <input type="text" name="username" class="input-field" placeholder="نام کاربری"  title="فقط حروف مجاز است">
+                        <input type="text" name="username" id="username" class="input-field" placeholder="نام کاربری"  title="فقط حروف مجاز است">
                         <i class="bx bx-user"></i>
                         <span id="usernameError" class="error-message"></span>
                     </div>
@@ -43,6 +43,13 @@
                         <i class="bx bx-phone"></i>
                         <span id="PhoneError" class="error-message"></span>
                     </div>
+                    <div class="input-box">
+    <input type="text" name="address" id="address" class="input-field" placeholder="آدرس ">
+    <i class="bx bx-home"></i>
+    <span id="addressError" class="error-message"></span>
+</div>
+
+
                     <div class="input-box">
                         <input type="submit" name="signup" class="submit" value="ثبت نام">
                     </div>
