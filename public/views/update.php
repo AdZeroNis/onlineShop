@@ -13,7 +13,82 @@ include '../php/profile.php';
     <link rel="stylesheet" href="../assets/css/sidbar.css" />
     <link rel="stylesheet" href="../assets/css/header.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js/dist/Chart.min.css" />
-    <title>MainPage</title>
+    <title>آپدیت محصول</title>
+    <style>
+        body {
+            font-family: "IranSans";
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        input,
+        select,
+        textarea {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #0f155c;
+            outline: none;
+            box-shadow: 0 0 5px rgba(60, 128, 35, 0.3);
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        .form-actions {
+            grid-column: span 2;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 12px 20px;
+            background-color: #0f155c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #333978;
+        }
+
+        svg {
+            margin-top: 5px;
+        }
+    </style>
 </head>
 
 <body>
@@ -32,6 +107,10 @@ include '../php/profile.php';
                     <a href="./userCounter.html" class="item">
                         <img src="../assets/svg/element-2 1.svg" alt="pishkhan" />
                         <li>پیشخوان کاربری</li>
+                    </a>
+                    <a href="./userCounter.html" class="item afterClick">
+                        <img src="../assets/svg/element-2 1.svg" alt="pishkhan" />
+                        <li>آپدیت محصول</li>
                     </a>
                     <a href="./chart.html" class="item">
                         <img src="../assets/svg/note-2 1.svg" alt="imageGozaresh" />
@@ -158,7 +237,6 @@ include '../php/profile.php';
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js/dist/Chart.min.js"></script>
-    <script src="../assets/js/mainPage.js"></script>
 </body>
 
 </html>
