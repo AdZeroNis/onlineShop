@@ -1,14 +1,22 @@
 <?php
-include '../php/profile.php';
-$user_id = $_SESSION['user_id'];
+include '../php/db.php';
 
-$query = "SELECT o.id, o.total_price, o.address, o.crearte_at, o.status, p.product_name, p.price, p.image_path 
+session_start();
+$user_id = $_SESSION['user_id']; // Get the user ID from session
+
+// Query to get orders and related order items for the logged-in user
+$query = "SELECT o.id AS order_id, o.total_price, o.address, o.created_at, o.status, oi.product_id, oi.basket_id, p.product_name AS product_name, p.price, p.image_path 
           FROM orders o
-          JOIN products p ON o.product_id = p.id
-          WHERE o.user_id = :user_id";
+          JOIN order_items oi ON o.id = oi.order_id
+          JOIN products p ON oi.product_id = p.id
+          WHERE o.user_id = :user_id
+          ORDER BY o.created_at DESC";
+
 $stmt = $conn->prepare($query);
-$stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+$stmt->bindParam(':user_id', $user_id);
 $stmt->execute();
+
+// Fetch all orders
 $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
@@ -124,17 +132,18 @@ $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <td><?php echo $order['product_name']; ?></td>
                             <td><?php echo number_format($order['price']); ?> تومان</td>
                             <td><?php echo $order['address']; ?></td>
-                            <td><?php echo date('Y-m-d', strtotime($order['crearte_at'])); ?></td>
-                            <td><?php echo number_format($order['total_price'] + $order['price']); ?> تومان</td>
+                            <td><?php echo date('Y-m-d', strtotime($order['created_at'])); ?></td>
+                            <td><?php echo number_format($order['total_price']); ?> تومان</td>
                             <td class="status-color">
-                                <?php 
-                                    if ($order['status'] == 0) {
-                                        echo "در حال پردازش";
-                                    } elseif ($order['status'] == 1) {
-                                        echo "ارسال";
-                                    } elseif ($order['status'] == 2) {
-                                        echo "عدم ارسال";
-                                    }
+                                <?php
+                                // Now the 'status' field is available
+                                if ($order['status'] == 0) {
+                                    echo "در حال پردازش";
+                                } elseif ($order['status'] == 1) {
+                                    echo "ارسال";
+                                } elseif ($order['status'] == 2) {
+                                    echo "عدم ارسال";
+                                }
                                 ?>
                             </td>
                         </tr>

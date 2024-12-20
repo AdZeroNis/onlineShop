@@ -1,5 +1,6 @@
 <?php
 include '../php/profile.php';
+include '../php/updateProduct.php';
 
 
 ?>
@@ -173,62 +174,61 @@ include '../php/profile.php';
                     </div>
                     <div class="form-container">
                         <form
-                            action="../php/products.php"
+                            action=""
                             method="post"
                             enctype="multipart/form-data">
                             <div class="form-grid">
                                 <div class="form-group">
                                     <label for="productName">نام محصول:</label>
-                                    <input type="text" id="productName" name="productName" required />
+                                    <input type="text" id="productName" name="product_name" required value="<?php echo $products['product_name']; ?>" />
                                 </div>
 
                                 <div class="form-group">
                                     <label for="price">قیمت (تومان):</label>
-                                    <input type="number" id="price" name="price" required />
+                                    <input type="number" id="price" name="price" required value="<?php echo $products['price']; ?>" />
                                 </div>
 
                                 <div class="form-group">
                                     <label for="size">اندازه:</label>
                                     <select id="size" name="size" required>
-                                        <option value="small">کوچک</option>
-                                        <option value="medium">متوسط</option>
-                                        <option value="large">بزرگ</option>
+                                        <option value="small" <?php echo $products['size'] == 'small' ? 'selected' : ''; ?>>کوچک</option>
+                                        <option value="medium" <?php echo $products['size'] == 'medium' ? 'selected' : ''; ?>>متوسط</option>
+                                        <option value="large" <?php echo $products['size'] == 'large' ? 'selected' : ''; ?>>بزرگ</option>
                                     </select>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="color">رنگ:</label>
-                                    <input type="text" id="color" name="color" required />
+                                    <input type="text" id="color" name="color" required value="<?php echo $products['color']; ?>" />
                                 </div>
 
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label for="stock">تعداد :</label>
                                     <input type="number" id="stock" name="stock" required />
-                                </div>
-
+                                </div> -->
                                 <div class="form-group">
                                     <label for="image">آپلود تصویر:</label>
-                                    <input
-                                        type="file"
-                                        id="image"
-                                        name="image"
-                                        accept="image/*"
-                                        required />
+                                    <!-- نمایش تصویر فعلی -->
+                                    <?php if ($products['image_path']): ?>
+                                        <img src="<?php echo ($products['image_path']); ?>" alt="Product Image" style="width: 100px; height: auto;" />
+                                    <?php else: ?>
+                                        <p>تصویری برای این محصول موجود نیست.</p>
+                                    <?php endif; ?>
+                                    <!-- ورودی برای بارگذاری تصویر جدید -->
+                                    <input type="file" id="image" name="image" />
                                 </div>
+
+
 
                                 <div class="form-group">
                                     <label for="description">توضیحات:</label>
-                                    <textarea
-                                        id="description"
-                                        name="description"
-                                        rows="4"
-                                        placeholder="توضیحات محصول را وارد کنید..."
-                                        required></textarea>
+                                    <textarea id="description" name="description" rows="4" placeholder="توضیحات محصول را وارد کنید..." required><?php echo $products['description']; ?></textarea>
+
                                 </div>
                             </div>
 
                             <div class="form-actions">
-                                <button type="submit">ارسال</button>
+                                <button type="submit" name="Record">ارسال</button>
                             </div>
                         </form>
                     </div>

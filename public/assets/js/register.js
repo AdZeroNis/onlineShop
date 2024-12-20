@@ -16,12 +16,8 @@ inputFields.forEach(function (field) {
 function validateRegisterForm() {
     var username = document.querySelector("#register .input-box input[type='text']");
     var password = document.querySelector("#register .input-box input[type='password']");
-    // var nationalCode = document.querySelector("#register .input-box input[id='nationalCode']");
+    var nationalCode = document.querySelector("#register .input-box input[id='nationalCode']");
     var phoneNumber = document.querySelector("#register .input-box input[type='number']:not([id='nationalCode'])"); 
-    var address = document.querySelector("#register .input-box input[type='text']:not([id='username'])");
-    console.log(address); // بررسی کنید که آیا فیلد آدرس به درستی شناسایی شده است
-    
-
     var email = document.querySelector("#register .input-box input[type='email']");
     var isValid = true; // Flag to track form validity
    
@@ -71,7 +67,21 @@ function validateRegisterForm() {
         }
       }
       
-   
+      if (nationalCode) {
+        var nationalCodeValue = nationalCode.value.trim();
+        if (!isValidNationalCode(nationalCodeValue)) {
+            nationalCode.classList.add("invalid");
+            var existingErrorMessage = nationalCode.nextElementSibling;
+            if (!existingErrorMessage || !existingErrorMessage.classList.contains('error-message')) {
+                var errorMessage = document.createElement('span');
+                errorMessage.textContent = 'لطفا کد ملی معتبر وارد کنید';
+                errorMessage.style.color = "white";
+                errorMessage.classList.add('error-message');
+                nationalCode.parentElement.appendChild(errorMessage);
+            }
+            isValid = false;
+        }
+      }
       
       if (phoneNumber) {
         var phoneNumberValue = phoneNumber.value.trim();
@@ -106,30 +116,12 @@ function validateRegisterForm() {
             isValid = false;
         }
       }
-      if (address) {
-        var addressValue = address.value.trim();
-        var addressPattern = /^(?![0-9])[a-zA-Z0-9\u0600-\u06FF]{3,}$/;
-        if (!addressPattern.test(addressValue)) {
-            address.classList.add("invalid");
-            var existingErrorMessage = address.nextElementSibling;
-            if (!existingErrorMessage || !existingErrorMessage.classList.contains('error-message')) {
-                var errorMessage = document.createElement('span');
-                errorMessage.textContent = 'لطفا یک آدرس معتبر وارد کنید';
-                errorMessage.style.color = "white";
-                errorMessage.classList.add('error-message');
-                address.parentElement.appendChild(errorMessage);
-            }
-            isValid = false;
-        }
-    }
-    
-    
- 
  
     if (isValid) {
         // Submit the form or perform further actions
-        window.location.href = "../views/index.html";
+        window.location.href = "mainPage.html";
     }
  
     return isValid;
  }
+ 
