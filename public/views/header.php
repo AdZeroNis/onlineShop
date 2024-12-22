@@ -6,7 +6,7 @@
     target="_blank">
     <picture class="w-100">
       <img
-        src="https://ibolak.com/storage/image/2024/8/1723454409-8xNmPrzWuTw3diVt.gif"
+        src="https://gooshishop.com/images/thumbs/n/Entity/0076022_desktop-5.jpeg"
         style="object-fit: cover; height: 60px"
         class="w-100"
         alt="بنر بالای هدر" />
@@ -82,7 +82,7 @@
       </div>
       <a href="./index.php" title="">
         <img
-          src="https://ibolak.com/assets/images/ibolak-logo.svg"
+          src="https://gooshishop.com/images/thumbs/n/Entity/0039711_logo-blue.png"
           height="50"
           alt="آی&zwnj;بولک" />
       </a>

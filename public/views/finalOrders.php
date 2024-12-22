@@ -5,8 +5,7 @@ session_start();
 $user_id = $_SESSION['user_id']; 
 $query = "SELECT o.id AS order_id, o.total_price, o.address, o.created_at, o.status, p.product_name, p.image_path, u.username AS user_name
           FROM orders o
-          JOIN order_items oi ON o.id = oi.order_id
-          JOIN products p ON oi.product_id = p.id
+          JOIN products p ON product_id = p.id
           JOIN user u ON o.user_id = u.id
           WHERE o.user_id = :user_id
           ORDER BY o.created_at DESC";

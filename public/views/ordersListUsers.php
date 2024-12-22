@@ -2,13 +2,11 @@
 include '../php/db.php';
 
 session_start();
-$user_id = $_SESSION['user_id']; // Get the user ID from session
+$user_id = $_SESSION['user_id']; 
 
-// Query to get orders and related order items for the logged-in user
-$query = "SELECT o.id AS order_id, o.total_price, o.address, o.created_at, o.status, oi.product_id, oi.basket_id, p.product_name AS product_name, p.price, p.image_path 
+$query = "SELECT o.id AS order_id, o.total_price, o.address, o.created_at, o.status, p.product_name AS product_name
           FROM orders o
-          JOIN order_items oi ON o.id = oi.order_id
-          JOIN products p ON oi.product_id = p.id
+          JOIN products p ON o.product_id = p.id
           WHERE o.user_id = :user_id
           ORDER BY o.created_at DESC";
 
@@ -18,6 +16,20 @@ $stmt->execute();
 
 // Fetch all orders
 $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// Function to convert order status to text
+function getOrderStatus($status) {
+    switch ($status) {
+        case 0:
+            return "در حال پردازش";
+        case 1:
+            return "ارسال";
+        case 2:
+            return "عدم ارسال";
+        default:
+            return "وضعیت نامشخص";
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -54,8 +66,7 @@ $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
             margin-top: 20px;
         }
 
-        table th,
-        table td {
+        table th, table td {
             padding: 12px;
             text-align: center;
             border-bottom: 1px solid #eee;
@@ -91,11 +102,6 @@ $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
             padding: 20px 0;
         }
 
-        .product-image {
-            width: 50px;
-            height: auto;
-        }
-
         .status-color {
             color: #f39c12;
             font-weight: bold;
@@ -114,9 +120,7 @@ $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <table>
                 <thead>
                     <tr>
-                        <th>عکس محصول</th>
-                        <th>نام محصول</th>
-                        <th>قیمت</th>
+                        <th>اسم محصول</th>
                         <th>آدرس</th>
                         <th>تاریخ سفارش</th>
                         <th>جمع نهایی</th>
@@ -126,25 +130,12 @@ $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <tbody>
                     <?php foreach ($orders as $order): ?>
                         <tr>
-                            <td>
-                                <img src="<?php echo $order['image_path']; ?>" alt="تصویر محصول" class="product-image">
-                            </td>
                             <td><?php echo $order['product_name']; ?></td>
-                            <td><?php echo number_format($order['price']); ?> تومان</td>
                             <td><?php echo $order['address']; ?></td>
                             <td><?php echo date('Y-m-d', strtotime($order['created_at'])); ?></td>
                             <td><?php echo number_format($order['total_price']); ?> تومان</td>
                             <td class="status-color">
-                                <?php
-                                // Now the 'status' field is available
-                                if ($order['status'] == 0) {
-                                    echo "در حال پردازش";
-                                } elseif ($order['status'] == 1) {
-                                    echo "ارسال";
-                                } elseif ($order['status'] == 2) {
-                                    echo "عدم ارسال";
-                                }
-                                ?>
+                                <?php echo getOrderStatus($order['status']); ?>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -153,7 +144,6 @@ $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <?php else: ?>
             <p class="text-center">شما هیچ سفارشی ندارید.</p>
         <?php endif; ?>
-
     </div>
 
     <!-- Footer -->
