@@ -21,6 +21,7 @@
                     <img src="https://ibolak.com/storage/image/2024/6/1718807353-TCMlDRbPFbA1CHFG.svg" id="imgHeader" alt="">
                 </div>
                 <form action="" method="POST" onsubmit="return validateRegisterForm(event)">
+                    
                     <div class="input-box">
                         <input type="text" name="username" id="username" class="input-field" placeholder="نام کاربری"  title="فقط حروف مجاز است">
                         <i class="bx bx-user"></i>
@@ -37,7 +38,7 @@
                         <i class="bx bx-lock-alt"></i>
                         <span id="passwordError" class="error-message"></span>
                     </div>
-                    <div class="input-box">
+              <div class="input-box">
                         <input type="number" name="phone" class="input-field" placeholder="شماره تلفن" 
                             title="لطفاً یک شماره تلفن معتبر (11 رقم که با 0 شروع می‌شود) وارد کنید">
                         <i class="bx bx-phone"></i>
@@ -48,6 +49,7 @@
     <i class="bx bx-home"></i>
     <span id="addressError" class="error-message"></span>
 </div>
+      
 
 
                     <div class="input-box">
