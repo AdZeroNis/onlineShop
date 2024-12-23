@@ -23,7 +23,8 @@ function validateRegisterForm(event) {
     var password = document.querySelector("#register .input-box input[type='password']");
     var phoneNumber = document.querySelector("#register .input-box input[type='number']:not([id='nationalCode'])");
     var email = document.querySelector("#register .input-box input[type='email']");
-    var address = document.querySelector("#address");
+    var address = document.querySelector("#register .input-box input[type='text']:not([id='username'])");
+  
     var isValid = true; // Flag to track form validity
 
     // Reset previous invalid field styles
