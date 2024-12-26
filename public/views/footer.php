@@ -149,11 +149,11 @@
           </div>
           <div class="col-lg-5">
             <div class="footer-widget">
-              <strong>فروشگاه اینترنتی پوشاک آی&zwnj;بولک</strong>
+              <strong>فروشگاه اینترنتی گوشی شاپ</strong>
               <p>
                 <b>آدرس فروشگاه:</b>
                 گرگان، بلوار ناهارخوران، بالاتر از عدالت ۵۶، نرسیده به میدان
-                گلشهر، فروشگاه آی&zwnj;بولک
+                گلشهر، فروشگاه گوشی شاپ
               </p>
               <div class="row">
                 <div class="col-12">
@@ -161,8 +161,8 @@
                     <b>آدرس ایمیل: </b>
                     <a
                       href="mailto:info@ibolak.com"
-                      title="ارسال ایمیل به آی&zwnj;بولک"
-                      target="_self">info@ibolak.com</a>
+                      title="ارسال ایمیل به گوشی شاپ"
+                      target="_self">info@goshiShop.com</a>
                   </p>
                   <p>
                     <b>شماره&zwnj;های تماس: </b>
@@ -196,7 +196,7 @@
     <div class="copyright">
       <div class="container">
         <p class="m-0">
-          کلیه حقوق متعلق به سایت آی&zwnj;بولک می&zwnj;باشد. | طراحی و توسعه:
+          کلیه حقوق متعلق به سایت گوشی شاپ می&zwnj;باشد. | طراحی و توسعه:
           <a target="_blank" href="https://tookan.tech">توکان تک</a>
         </p>
       </div>
