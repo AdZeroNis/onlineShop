@@ -76,7 +76,7 @@
             maxlength="100"
             type="text"
             data-url="https://ibolak.com/products/search"
-            placeholder="جستجو در آی&zwnj;بولک"
+            placeholder="جستجو در گوشی شاپ"
             class="form-control" />
         </form>
       </div>
