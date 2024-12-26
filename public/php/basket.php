@@ -19,34 +19,33 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
-// Fetch the user's address and basket items
 try {
-    // Fetch user's address (replace this with your actual query for the user's data)
-    $query_user = "SELECT address FROM user WHERE id = :user_id";
+    // Retrieve user address
+    $query_user = "SELECT address FROM user WHERE id = ?";
     $stmt_user = $conn->prepare($query_user);
-    $stmt_user->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+    $stmt_user->bindValue(1, $user_id, PDO::PARAM_INT);
     $stmt_user->execute();
     $users = $stmt_user->fetch(PDO::FETCH_ASSOC);
 
-    // Fetch basket items for the logged-in user
+    // Retrieve basket items
     $query_basket = "SELECT b.id AS basket_id, b.quantity, p.product_name, p.price, p.image_path, p.id AS product_id
                      FROM basket b
                      JOIN products p ON b.product_id = p.id
-                     WHERE b.user_id = :user_id";
-
+                     WHERE b.user_id = ?";
+    
     $stmt_basket = $conn->prepare($query_basket);
-    $stmt_basket->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+    $stmt_basket->bindValue(1, $user_id, PDO::PARAM_INT);
     $stmt_basket->execute();
     $basket_items = $stmt_basket->fetchAll(PDO::FETCH_ASSOC);
 
-    // Calculate total sum from basket items
+    // Calculate total sum
     $total_sum = 0;
     foreach ($basket_items as $item) {
         $total_sum += $item['price'] * $item['quantity'];
     }
 
-    // Static shipping cost and final price calculation
-    $shipping_cost = 50000; // Example static shipping cost
+    // Shipping cost
+    $shipping_cost = 50000;
     $final_price = $total_sum + $shipping_cost;
 
 } catch (PDOException $e) {

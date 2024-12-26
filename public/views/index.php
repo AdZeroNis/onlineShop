@@ -1,12 +1,4 @@
 <?php
-session_start();
-if (!isset($_SESSION['signin']) || $_SESSION['signin'] !== true) {
-
-  header('Location: ./login.php');
-  exit;
-}
-?>
-<?php
 include '../php/index.php';
 ?>
 

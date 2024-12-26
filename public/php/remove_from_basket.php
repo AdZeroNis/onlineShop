@@ -18,7 +18,7 @@ if (isset($_GET['id'])) {
     try {
       
         $stmt = $conn->prepare("DELETE FROM basket WHERE id = :id");
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
 
       
