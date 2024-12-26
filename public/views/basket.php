@@ -158,7 +158,7 @@
 
                 <form action="./invoice.php" method="POST">
                     <input type="hidden" name="total_sum" value="<?php echo $total_sum; ?>" />
-                    <button type="submit" name="Record" class="btn-checkout">ادامه خرید</button>
+                    <button type="submit" name="Record" class="btn-checkout" style="background-color: #0d6efd;">ادامه خرید</button>
                 </form>
             </div>
         <?php else: ?>

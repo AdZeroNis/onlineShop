@@ -81,7 +81,7 @@ include '../php/profile.php';
     button {
       padding: 12px;
       font-size: 16px;
-      background-color: #ffc107;
+      background-color: #0d6efd;
       color: #fff;
       border: none;
       border-radius: 5px;

@@ -103,7 +103,7 @@ function getOrderStatus($status) {
         }
 
         .status-color {
-            color: #f39c12;
+            color:  #0d6efd;
             font-weight: bold;
         }
     </style>

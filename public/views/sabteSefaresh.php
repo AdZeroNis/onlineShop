@@ -15,6 +15,11 @@ include '../php/productsList.php';
             flex-direction: column;
             align-items: flex-start;
         }
+        .btn-warning {
+    color: #212529;
+    background-color: #0d6efd !important;
+    border-color: #0d6efd !important;
+}
     </style>
 </head>
 
@@ -57,7 +62,7 @@ include '../php/productsList.php';
                             <td><?php echo ($row['color']); ?></td>
                             <td><?php echo ($row['description']); ?></td>
                             <td>
-                                <a href="./updateProduct.php?id=<?php echo $row['id']; ?>"   class="btn btn-warning">ویرایش</a>
+                                <a href="./updateProduct.php?id=<?php echo $row['id']; ?>"   class="btn btn-warning" style="background-color: #0d6efd;">ویرایش</a>
 
 
                                 <a href="../php/deleteProduct.php?id=<?php echo $row['id']; ?>" class="btn btn-danger">حذف</a>

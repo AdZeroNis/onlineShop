@@ -33,7 +33,7 @@
       max-width: 100%;
       height: auto;
       border-radius: 10px;
-      border: 1px solid rgba(252, 189, 21, 1);
+      border: 1px solid rgba(13, 110, 253, 1)
     }
 
     .product-info {
@@ -46,14 +46,14 @@
 
     .btn-warning {
       margin-top: 20px;
-      background-color: #ff9800;
-      border-color: #ff9800;
+      background-color: #007bff ;
+      border-color: #007bff ;
       transition: all 0.3s;
     }
 
     .btn-warning:hover {
-      background-color: #e68900;
-      border-color: #e68900;
+      background-color: #007bff ;
+      border-color: #007bff ;
     }
 
     footer {
@@ -105,7 +105,7 @@
     .price {
       font-size: 1.25rem;
       font-weight: 500;
-      color: rgba(252, 189, 21, 1);
+      color: rgba(13, 110, 253, 1)
     }
 
     .bottom {

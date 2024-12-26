@@ -118,7 +118,7 @@
             <input type="hidden" name="total_price" value="<?php echo $final_price; ?>" />
 
             <!-- Submit button for the entire basket -->
-            <button type="submit" name="Record" class="btn-submit">تأیید و ثبت سفارش</button>
+            <button type="submit" name="Record" class="btn-submit" style="background-color: #0d6efd;">تأیید و ثبت سفارش</button>
         </form>
     </div>
 

@@ -122,7 +122,7 @@ include '../php/index.php';
               <div class="card-body">
                 <h5 class="card-title"><?php echo ($row['product_name']); ?></h5>
                 <p class="card-text">قیمت: <?php echo ($row['price']); ?> تومان</p>
-                <a href="./singlePage.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm">مشاهده جزئیات</a>
+                <a href="./singlePage.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm"  style="background: #007bff !important;">مشاهده جزئیات</a>
               </div>
             </div>
           </div>

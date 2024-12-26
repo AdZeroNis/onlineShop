@@ -5,6 +5,14 @@
   align-items: center;
   padding-top: 10px;
   padding-bottom: 10px;
+  justify-content: space-between;
+}
+
+.Header .search-wrapper {
+  min-width: 570px;
+  padding: 1rem;
+  border: none !important;
+  background: transparent;
 }
 
 .Header .iamgeClock {
@@ -19,4 +27,28 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+
+.search-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.search-wrapper .form-control {
+  width: 100%;
+}
+
+.d-flex .me-auto {
+  margin-right: auto;
+}
+
+.d-flex .mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-with-icon {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
 }
