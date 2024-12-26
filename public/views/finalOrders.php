@@ -11,7 +11,7 @@ $query = "SELECT o.id AS order_id, o.total_price, o.address, o.created_at, o.sta
           ORDER BY o.created_at DESC";
 
 $stmt = $conn->prepare($query);
-$stmt->bindParam(':user_id', $user_id);
+$stmt->bindValue(':user_id', $user_id);
 $stmt->execute();
 
 // Fetch all orders

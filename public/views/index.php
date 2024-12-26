@@ -1,11 +1,6 @@
 <?php
-session_start();
-if (!isset($_SESSION['signin']) || $_SESSION['signin'] !== true) {
-  header('Location: ./login.php');
-  exit;
-}
+include '../php/index.php';
 ?>
-<?php include '../php/index.php'; ?>
 
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">

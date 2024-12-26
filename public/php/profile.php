@@ -1,10 +1,12 @@
 <?php
+// profile.php
 include '../php/db.php';
+
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-if (!isset($_SESSION['signin']) || $_SESSION['signin'] !== true) {
+if (!isset($_SESSION['user_id'])) {
     header('Location: ./login.php');
     exit;
 }
@@ -14,11 +16,12 @@ $id = $_SESSION['user_id'];
 $result = $conn->prepare("SELECT * FROM user WHERE id=?");
 $result->bindValue(1, $id);
 $result->execute();
-$users = $result->fetch(PDO::FETCH_ASSOC);
+$users = $result->fetch(PDO::FETCH_ASSOC); 
 
 if (!$users) {
     die('User not found.');
 }
+
 
 if (isset($_POST['edit_profile'])) {
     $username = $_POST['username'];

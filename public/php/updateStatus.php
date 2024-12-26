@@ -7,8 +7,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['order_id']) && isset($
 
     $update_query = "UPDATE orders SET status = :status WHERE id = :order_id";
     $stmt = $conn->prepare($update_query);
-    $stmt->bindParam(':status', $status, PDO::PARAM_INT);
-    $stmt->bindParam(':order_id', $order_id, PDO::PARAM_INT);
+    $stmt->bindValue(':status', $status, PDO::PARAM_INT);
+    $stmt->bindValue(':order_id', $order_id, PDO::PARAM_INT);
 
 
     if ($stmt->execute()) {
