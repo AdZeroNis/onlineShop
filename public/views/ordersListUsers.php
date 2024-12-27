@@ -19,10 +19,9 @@ $stmt = $conn->prepare($query);
 $stmt->bindValue(':user_id', $user_id);
 $stmt->execute();
 
-// Fetch all orders
 $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Function to convert order status to text
+
 function getOrderStatus($status) {
     switch ($status) {
         case 0:
