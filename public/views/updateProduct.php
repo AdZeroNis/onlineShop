@@ -89,6 +89,7 @@ include '../php/updateProduct.php';
         svg {
             margin-top: 5px;
         }
+    
     </style>
 </head>
 
@@ -100,28 +101,24 @@ include '../php/updateProduct.php';
                     <div class="nameUser">
                         <span><?php echo $users['username']; ?></span>
                     </div>
-                    <div class="wellcome">
-                        <span>عزیز خوش آمدید</span>
-                    </div>
+
+                    <a style="  text-decoration: none;
+            color: white;" href="./index.php">صفحه ی اول</a>
                 </div>
                 <ul>
-                    <a href="./userCounter.html" class="item">
+                    <a href="./userCounter.php" class="item">
                         <img src="../assets/svg/element-2 1.svg" alt="pishkhan" />
                         <li>پیشخوان کاربری</li>
                     </a>
-                    <a href="./userCounter.html" class="item afterClick">
+                    <a href="./userCounter.php" class="item afterClick">
                         <img src="../assets/svg/element-2 1.svg" alt="pishkhan" />
                         <li>آپدیت محصول</li>
-                    </a>
-                    <a href="./chart.html" class="item">
-                        <img src="../assets/svg/note-2 1.svg" alt="imageGozaresh" />
-                        <li>گزارش </li>
                     </a>
                     <a href="./sabteSefaresh.php" class="item">
                         <img src="../assets/svg/note-1 1.svg" alt="imageSefaresh" />
                         <li>لیست محصولات</li>
                     </a>
-                    <a href="./orders.php" class="item">
+                    <a href="./finalOrders.php" class="item">
                         <img
                             src="../assets/svg/receipt-item 1.svg"
                             alt="imageSoratHesab" />

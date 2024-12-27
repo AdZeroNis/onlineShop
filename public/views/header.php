@@ -66,7 +66,11 @@
             <a href="#" class="btn btn-primary btn-with-icon me-2 ps-4 fs-7"  style="background: #007bff !important;">
               <img src="https://ibolak.com/assets/icons/user.svg" alt="User icon" />
               <span><?php echo $users['username']; ?></span>
-            </a>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="userDropdown">
+              <a class="dropdown-item" href="./profile.php">پروفایل </a>
+              <a class="dropdown-item" href="./ordersListUsers.php">لیست سفارشات </a>
+              </div>
           <?php } ?>
         <?php } else { ?>
           <a href="./login.php" class="btn btn-primary btn-with-icon me-2 ps-4 fs-7">

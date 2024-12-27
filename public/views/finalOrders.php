@@ -2,7 +2,7 @@
 include '../php/db.php';
 
 session_start();
-$user_id = $_SESSION['user_id']; // در اینجا نیاز است که ادمین ID داشته باشد
+$user_id = $_SESSION['user_id'];
 
 $query = "
     SELECT o.id AS order_id, o.total_price, o.address, o.created_at, o.status, u.username AS user_name, 

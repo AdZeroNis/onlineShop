@@ -25,11 +25,10 @@ include '../php/profile.php';
            
           </div> -->
           <div class="nameUser">
-            <span><?php echo $users['username']; ?></span>
+            <span><?php echo $users['username']; ?> </span>
           </div>
-          <div class="wellcome">
-            <span>عزیز خوش آمدید</span>
-          </div>
+          <a style="  text-decoration: none;
+            color: white;" href="./index.php">صفحه ی اول</a>
         </div>
         <ul>
           <a href="./userCounter.php" class="item" >
