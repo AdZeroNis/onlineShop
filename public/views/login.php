@@ -18,7 +18,7 @@
             <div class="login-container" id="login">
                 <div class="top">
                     <span>حساب کاربری ندارید؟ <a href="register.php">ثبت نام</a></span>
-                    <img src="https://ibolak.com/storage/image/2024/6/1718807353-TCMlDRbPFbA1CHFG.svg" id="imgHeader" alt="">
+                    <img src="https://gooshishop.com/images/thumbs/n/Entity/0039711_logo-blue.png"" id="imgHeader" alt="">
                 </div>
                 <form action="" method="POST" onsubmit="return validateLoginForm(event)">
                 <div class="input-box">

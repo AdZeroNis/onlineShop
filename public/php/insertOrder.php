@@ -5,7 +5,7 @@ include '../php/db.php';
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-if (!isset($_SESSION['signin']) || $_SESSION['signin'] !== true) {
+if (!isset($_SESSION['user_id'])) {
     header('Location: ./login.php');
     exit;
 }

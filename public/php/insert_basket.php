@@ -5,11 +5,6 @@ if (session_status() == PHP_SESSION_NONE) {
 
 include 'db.php';
 
-if (!isset($_SESSION['signin']) || $_SESSION['signin'] !== true) {
-    header("Location: login.php");
-    exit();
-}
-
 if (!isset($_SESSION['user_id'])) {
     echo "خطا: شناسه کاربر یافت نشد.";
     exit();

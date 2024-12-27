@@ -24,20 +24,21 @@
     </a>
 
     <!-- Centered Search Bar -->
-    <form method="get" action="https://ibolak.com/products" class="search-wrapper mx-auto">
-      <span class="search-wrapper-icon">
-        <img src="https://ibolak.com/assets/icons/search.svg" alt="Search Icon" />
-      </span>
-      <input
-        name="search_key"
-        autocomplete="off"
-        maxlength="100"
-        type="text"
-        data-url="https://ibolak.com/products/search"
-        placeholder="جستجو در گوشی شاپ"
-        class="form-control"
-      />
-    </form>
+   <!-- Centered Search Bar -->
+<form method="get" action="./search.php" class="search-wrapper mx-auto">
+  <span class="search-wrapper-icon">
+    <img src="https://ibolak.com/assets/icons/search.svg" alt="Search Icon" />
+  </span>
+  <input
+    name="search_key"
+    autocomplete="off"
+    maxlength="100"
+    type="text"
+    placeholder="جستجو در گوشی شاپ"
+    class="form-control"
+  />
+</form>
+
 
     <!-- Left Side: User and Basket -->
     <div class="d-flex align-items-center">
@@ -75,5 +76,8 @@
         <?php } ?>
       </div>
     </div>
+    
   </div>
 </div>
+
+
