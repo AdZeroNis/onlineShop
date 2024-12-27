@@ -127,7 +127,7 @@
                     <?php
                     $total_sum = 0;
                     foreach ($basket_items as $item):
-                        $item_total_price = $item['price'] * $item['quantity']; // محاسبه جمع قیمت
+                        $item_total_price = $item['price'] * $item['quantity']; 
                         $total_sum += $item_total_price;
                     ?>
                         <tr>

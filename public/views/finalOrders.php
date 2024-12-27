@@ -2,19 +2,24 @@
 include '../php/db.php';
 
 session_start();
-$user_id = $_SESSION['user_id'];
-$query = "SELECT o.id AS order_id, o.total_price, o.address, o.created_at, o.status, p.product_name, p.image_path, u.username AS user_name
-          FROM orders o
-          JOIN products p ON product_id = p.id
-          JOIN user u ON o.user_id = u.id
-          WHERE o.user_id = :user_id
-          ORDER BY o.created_at DESC";
+$user_id = $_SESSION['user_id']; // در اینجا نیاز است که ادمین ID داشته باشد
+
+$query = "
+    SELECT o.id AS order_id, o.total_price, o.address, o.created_at, o.status, u.username AS user_name, 
+           GROUP_CONCAT(p.product_name SEPARATOR ', ') AS product_names,
+           GROUP_CONCAT(p.image_path SEPARATOR ',') AS product_images
+    FROM orders o
+    JOIN order_items oi ON o.id = oi.order_id
+    JOIN products p ON oi.product_id = p.id
+    JOIN user u ON o.user_id = u.id
+    GROUP BY o.id
+    ORDER BY o.created_at DESC
+";
 
 $stmt = $conn->prepare($query);
-$stmt->bindValue(':user_id', $user_id);
 $stmt->execute();
 
-// Fetch all orders
+
 $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
@@ -43,9 +48,7 @@ $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
             border-collapse: collapse;
         }
 
-        table,
-        th,
-        td {
+        table, th, td {
             border: 1px solid #ddd;
             padding: 10px;
         }
@@ -61,7 +64,6 @@ $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         .product-image {
             width: 50px;
-            /* عرض تصویر */
             height: auto;
         }
 
@@ -96,6 +98,7 @@ $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <tr>
                         <th>آیدی سفارش</th>
                         <th>عکس محصول</th>
+                        <th>محصولات</th>
                         <th>کاربر</th>
                         <th>جمع نهایی</th>
                         <th>آدرس</th>
@@ -107,8 +110,13 @@ $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <tr>
                             <td><?php echo $order['order_id']; ?></td>
                             <td>
-                                <img src="<?php echo $order['image_path']; ?>" alt="تصویر محصول" class="product-image">
+                                <?php 
+                                $images = explode(',', $order['product_images']); 
+                                foreach ($images as $image): ?>
+                                    <img src="<?php echo $image; ?>" alt="تصویر محصول" class="product-image">
+                                <?php endforeach; ?>
                             </td>
+                            <td><?php echo $order['product_names']; ?></td>
                             <td><?php echo $order['user_name']; ?></td>
                             <td><?php echo number_format($order['total_price']); ?> تومان</td>
                             <td><?php echo $order['address']; ?></td>

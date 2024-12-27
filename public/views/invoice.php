@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>فاکتور نهایی</title>
+    <title> نهایی</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css" />
     <style>
@@ -83,7 +83,7 @@
     <?php include './header.php'; ?>
 
     <div class="container invoice-container">
-        <h2 class="text-center">فاکتور نهایی</h2>
+        <h2 class="text-center"> نهایی</h2>
 
         <!-- Table to display total sum, shipping cost, and final price -->
         <table>
@@ -112,10 +112,11 @@
             <?php foreach ($basket_items as $item) { ?>
                 <input type="hidden" name="product_id[]" value="<?php echo $item['product_id']; ?>" /> <!-- ارسال product_id -->
                 <input type="hidden" name="basket_id[]" value="<?php echo $item['basket_id']; ?>" />
+                <input type="hidden" name="total_price" value="<?php echo $final_price; ?>" />
             <?php } ?>
 
             <input type="hidden" name="user_id" value="<?php echo $user_id; ?>" />
-            <input type="hidden" name="total_price" value="<?php echo $final_price; ?>" />
+            
 
             <!-- Submit button for the entire basket -->
             <button type="submit" name="Record" class="btn-submit" style="background-color: #0d6efd;">تأیید و ثبت سفارش</button>

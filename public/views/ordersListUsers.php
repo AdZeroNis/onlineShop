@@ -4,11 +4,16 @@ include '../php/db.php';
 session_start();
 $user_id = $_SESSION['user_id']; 
 
-$query = "SELECT o.id AS order_id, o.total_price, o.address, o.created_at, o.status, p.product_name AS product_name
-          FROM orders o
-          JOIN products p ON o.product_id = p.id
-          WHERE o.user_id = :user_id
-          ORDER BY o.created_at DESC";
+$query = "
+    SELECT o.id AS order_id, o.total_price, o.address, o.created_at, o.status,
+           p.product_name
+    FROM orders o
+    JOIN order_items oi ON o.id = oi.order_id
+    JOIN products p ON oi.product_id = p.id
+    WHERE o.user_id = :user_id
+    ORDER BY o.created_at DESC
+";
+
 
 $stmt = $conn->prepare($query);
 $stmt->bindValue(':user_id', $user_id);
@@ -120,7 +125,7 @@ function getOrderStatus($status) {
             <table>
                 <thead>
                     <tr>
-                        <th>اسم محصول</th>
+                        <th>محصولات</th>
                         <th>آدرس</th>
                         <th>تاریخ سفارش</th>
                         <th>جمع نهایی</th>
