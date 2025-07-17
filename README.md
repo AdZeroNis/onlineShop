@@ -1,6 +1,6 @@
 
 
-<h2 align="center"> GooshShop | فروشگاه آنلاین گوشی</h2>
+<h2 align="center"> GooshiShop | فروشگاه آنلاین گوشی</h2>
 
 <p align="center">
     پروژه‌ای برای خرید، فروش، و مدیریت گوشی 
